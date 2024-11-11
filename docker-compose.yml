@@ -1,0 +1,59 @@
+services:
+  db:
+    container_name: smago-map-db-container
+    image: postgres:16.2
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DOCKER_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${DOCKER_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${DOCKER_POSTGRES_DB}
+      TZ: "Asia/Tokyo"
+    expose:
+      - "5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./database/postgresql.conf:/etc/postgresql/postgresql.conf
+    command: -c 'config_file=/etc/postgresql/postgresql.conf'
+    restart: always
+
+  backend:
+    container_name: smago-map-backend-container
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      TZ: "Asia/Tokyo"
+    ports:
+      - "${BACKEND_PORT}:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+    restart: always
+    command: bash -c "python app.py"
+
+  frontend:
+    container_name: smago-map-frontend-container
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      TZ: "Asia/Tokyo"
+      REACT_APP_BACKEND_PORT: ${BACKEND_PORT}
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge

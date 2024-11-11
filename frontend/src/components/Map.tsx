@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap, Circle, useMapEvents, Polyline } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, Polyline } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import L from "leaflet";
 import { LatLngExpression } from "leaflet";
 import polyline from "@mapbox/polyline";
 
-const apiEndpoint = "http://localhost:8000/api";
+// const apiEndpoint = "http://localhost:8000/api";
+const apiEndpoint = "http://localhost:58888/api";
 const zoomLevel = 20;
 
-interface MapComponentProps {
-    position: LatLngExpression;
-}
+// interface MapComponentProps {
+//     position: LatLngExpression;
+// }
 
-const MapComponent: React.FC<MapComponentProps> = ({ position }) => {
-    const map = useMap();
+// const MapComponent: React.FC<MapComponentProps> = ({ position }) => {
+//     const map = useMap();
 
-    useEffect(() => {
-        if (position) {
-            map.setView(position, zoomLevel);
-        }
-    }, [map, position]);
+//     useEffect(() => {
+//         if (position) {
+//             map.setView(position, zoomLevel);
+//         }
+//     }, [map, position]);
 
-    return null;
-};
+//     return null;
+// };
 
 const MapClickHandler: React.FC<{ setClickedPosition: (pos: LatLngExpression) => void; addRequest: (pos: LatLngExpression) => void }> = ({
     setClickedPosition,
