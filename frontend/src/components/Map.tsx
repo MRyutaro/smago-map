@@ -68,6 +68,7 @@ const Map: React.FC = () => {
     const [requests, setRequests] = useState<Array<{ id: number; latitude: number; longitude: number }>>([]);
     const [_, setClickedPosition] = useState<LatLngExpression | null>(null);
     const [route, setRoute] = useState<[number, number][]>([]);
+    const [routeRadius, setRouteRadius] = useState<number>(0);
 
     useEffect(() => {
         // FastAPIのエンドポイントからゴミ箱の位置を取得
@@ -120,12 +121,16 @@ const Map: React.FC = () => {
                         },
                         body: JSON.stringify({
                             origin: {
-                                latitude: latitude,
-                                longitude: longitude,
+                                // latitude: latitude,
+                                // longitude: longitude,
+                                latitude: 35.72285883534467,
+                                longitude: 139.80149745941165,
                             },
                             destination: {
-                                latitude: latitude,
-                                longitude: longitude,
+                                // latitude: latitude,
+                                // longitude: longitude,
+                                latitude: 35.72285883534467,
+                                longitude: 139.80149745941165,
                             },
                         }),
                     });
@@ -133,6 +138,7 @@ const Map: React.FC = () => {
                     const data = await response.json();
                     const decodedRoute = polyline.decode(data.polyline_points);
                     console.log("Decoded Route:", decodedRoute);
+                    setRouteRadius(data.radius);
                     setRoute(decodedRoute);
                 });
             } catch (error) {
@@ -177,9 +183,8 @@ const Map: React.FC = () => {
                 />
                 {position && (
                     <>
-                        <CircleMarker center={position} pathOptions={{ fillColor: "blue" }} radius={10}>
-                            <Popup>Me</Popup>
-                        </CircleMarker>
+                        <CircleMarker center={position} pathOptions={{ color: "white" }} radius={10}></CircleMarker>
+                        <CircleMarker center={position} pathOptions={{ fillColor: "blue", fillOpacity: 1 }} radius={10}></CircleMarker>
                     </>
                 )}
 

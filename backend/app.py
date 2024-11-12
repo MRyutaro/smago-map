@@ -7,6 +7,7 @@ import dotenv
 import requests
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from geopy.distance import geodesic
 from pydantic import BaseModel
 
 dotenv.load_dotenv()
@@ -62,12 +63,19 @@ TRASHCANS = [
     {"id": 8, "latitude": 35.7128409, "longitude": 139.7963711, "location_description": "近くの病院に設置してあります", "status": Status.not_full},
     {"id": 9, "latitude": 35.7128488, "longitude": 139.7960204, "location_description": "近くのスーパーに設置してあります", "status": Status.full},
     {"id": 10, "latitude": 35.7112601, "longitude": 139.7963721, "location_description": "近くのコンビニに設置してあります", "status": Status.full},
+    {"id": 11, "latitude": 35.680916839441025, "longitude": 139.76553440093997, "location_description": "", "status": Status.full},
+    {"id": 12, "latitude": 35.681962608079424, "longitude": 139.7661137580872, "location_description": "", "status": Status.not_full},
+    {"id": 13, "latitude": 35.682746925563386, "longitude": 139.76675748825076, "location_description": "", "status": Status.not_full},
+    {"id": 14, "latitude": 35.68107370561057, "longitude": 139.76450443267825, "location_description": "", "status": Status.not_full},
+    {"id": 15, "latitude": 35.682136901519925, "longitude": 139.7646760940552, "location_description": "", "status": Status.not_full},
 ]
 
 REQUESTS = [
     {"id": 1, "latitude": 35.71279354903134, "longitude": 139.79717373847964, "created_at": "2024-11-11T12:00:00.910987"},
     {"id": 2, "latitude": 35.7132465360125, "longitude": 139.79656219482425, "created_at": "2024-11-11T12:30:00.627615"},
 ]
+
+R = 5000  # m
 
 
 @app.get("/api")
@@ -102,20 +110,23 @@ async def create_request(request: Request):
 
 @app.post("/api/route")
 async def get_shortest_route(route_request: RouteRequest):
-    # # full状態のゴミ箱のみを抽出
-    # full_trashcans = [trashcan for trashcan in TRASHCANS if trashcan["status"] == Status.full]
-
-    # if not full_trashcans:
-    #     raise HTTPException(status_code=404, detail="Full trashcans not found")
-
-    # # ゴミ箱の位置をWaypointsとして構築
-    # waypoints = "|".join([f'{t["latitude"]},{t["longitude"]}' for t in full_trashcans])
-
     # # 最初と最後のゴミ箱位置（例：1番目と最後のゴミ箱位置に設定）
     # origin = f'{route_request.origin.latitude},{route_request.origin.longitude}'
     # destination = f'{route_request.destination.latitude},{route_request.destination.longitude}'
-    # origin = '35.72285883534467,139.80149745941165'
-    # destination = '35.72285883534467,139.80149745941165'
+    # # origin = '35.72285883534467,139.80149745941165'
+    # # destination = '35.72285883534467,139.80149745941165'
+
+    # # 半径 R 以内のゴミ箱をフィルタリング
+    # filtered_trashcans = [
+    #     trashcan for trashcan in TRASHCANS
+    #     if geodesic(origin, (trashcan["latitude"], trashcan["longitude"])).meters <= R
+    # ]
+
+    # if not filtered_trashcans:
+    #     raise HTTPException(status_code=404, detail="Full trashcans not found")
+
+    # # ゴミ箱の位置をWaypointsとして構築
+    # waypoints = "|".join([f'{t["latitude"]},{t["longitude"]}' for t in filtered_trashcans])
 
     # # Google Maps Directions APIエンドポイント
     # url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&waypoints={waypoints}&key={GOOGLE_MAPS_API_KEY}"
@@ -133,7 +144,10 @@ async def get_shortest_route(route_request: RouteRequest):
     # print(route_data)
 
     polyline_points = route_data["routes"][0]["overview_polyline"]["points"]
-    return {"polyline_points": polyline_points}
+    return {
+        "radius": R,
+        "polyline_points": polyline_points
+    }
 
 
 if __name__ == "__main__":
