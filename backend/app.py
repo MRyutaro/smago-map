@@ -5,7 +5,7 @@ from enum import Enum
 
 import dotenv
 import requests
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from geopy.distance import geodesic
 from pydantic import BaseModel
@@ -29,7 +29,7 @@ app.add_middleware(
 )
 
 
-class Request(BaseModel):
+class TrashcanRequest(BaseModel):
     latitude: float
     longitude: float
 
@@ -73,12 +73,14 @@ TRASHCANS = [
     {"id": 18, "latitude": 35.69250667592556, "longitude": 139.75948333740237, "location_description": "", "status": Status.full},
 ]
 
-REQUESTS = [
-    {"id": 1, "latitude": 35.71279354903134, "longitude": 139.79717373847964, "created_at": "2024-11-11T12:00:00.910987"},
-    {"id": 2, "latitude": 35.7132465360125, "longitude": 139.79656219482425, "created_at": "2024-11-11T12:30:00.627615"},
+TRASHCANS_REQUESTS = [
+    {"id": 1, "latitude": 35.71279354903134, "longitude": 139.79717373847964, "created_at": "2024-11-11T12:00:00.910987", "host": ""},
+    {"id": 2, "latitude": 35.7132465360125, "longitude": 139.79656219482425, "created_at": "2024-11-11T12:30:00.627615", "host": ""},
 ]
 
 R = 5000  # m
+
+REQUEST_INTERVAL = 60  # min
 
 
 @app.get("/api")
@@ -95,19 +97,29 @@ async def get_trashcans():
 
 @app.get("/api/requests")
 async def get_requests():
-    return {"requests": REQUESTS}
+    return {"requests": TRASHCANS_REQUESTS}
 
 
 @app.post("/api/requests")
-async def create_request(request: Request):
-    new_id = len(REQUESTS) + 1
+async def create_request(trashcan_request: TrashcanRequest, request: Request):
+    new_id = len(TRASHCANS_REQUESTS) + 1
+    request_ip = request.client.host
+
+    # IPアドレスごとにREQUEST_INTERVAL以内にリクエストがあるかチェック
+    for req in TRASHCANS_REQUESTS:
+        if req["host"] == request_ip:
+            created_at = datetime.fromisoformat(req["created_at"])
+            if (datetime.now() - created_at).total_seconds() < REQUEST_INTERVAL * 60:
+                raise HTTPException(status_code=429, detail="Too many requests")
+
     new_request = {
         "id": new_id,
-        "latitude": request.latitude,
-        "longitude": request.longitude,
+        "latitude": trashcan_request.latitude,
+        "longitude": trashcan_request.longitude,
         "created_at": datetime.now().isoformat(),
+        "host": request_ip,
     }
-    REQUESTS.append(new_request)
+    TRASHCANS_REQUESTS.append(new_request)
     return {"request": new_request}
 
 
