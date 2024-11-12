@@ -6,8 +6,8 @@ import L from "leaflet";
 import { LatLngExpression } from "leaflet";
 import polyline from "@mapbox/polyline";
 
-// const apiEndpoint = "http://localhost:8000/api";
-const apiEndpoint = "http://localhost:58888/api";
+const apiEndpoint = "http://localhost:8000/api";
+// const apiEndpoint = "http://localhost:58888/api";
 // const apiEndpoint = "http://smagomap-api.mryutaro.site/api";
 const zoomLevel = 20;
 
@@ -111,6 +111,7 @@ const Map: React.FC = () => {
                 const response = await fetch(apiEndpoint + "/route");
                 const data = await response.json();
                 const decodedRoute = polyline.decode(data.polyline_points);
+                console.log("Decoded Route:", decodedRoute);
                 setRoute(decodedRoute);
             } catch (error) {
                 console.error("Error fetching route:", error);
@@ -187,7 +188,9 @@ const Map: React.FC = () => {
                         <Popup>request {request.id}</Popup>
                     </Circle>
                 ))}
+
                 {route.length > 0 && <Polyline positions={route} color="blue" />}
+
                 <MapClickHandler setClickedPosition={setClickedPosition} addRequest={addRequest} />
             </MapContainer>
 
