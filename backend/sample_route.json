@@ -1,101 +1,83 @@
 {
     "geocoded_waypoints": [
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJfRHV7bePGGARGj9XA3yhlck",
-            "types": ["establishment", "point_of_interest", "tourist_attraction"]
-        },
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJfRHV7bePGGARGj9XA3yhlck",
-            "types": ["establishment", "point_of_interest", "tourist_attraction"]
-        },
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJSUbyRsCOGGARpkF9ObX7ZUg",
-            "types": ["establishment", "pet_store", "point_of_interest", "store"]
-        },
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJx6tZw8aOGGARvjsxV2u9ccc",
-            "types": ["premise"]
-        },
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJ8awUL8GOGGARjfDbH69y2XU",
-            "types": ["street_address"]
-        },
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJtdbUIcGOGGARhUUqA5vTi7M",
-            "types": ["premise"]
-        },
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJv-EPNqyPGGARLALdlrCozq4",
-            "types": ["establishment", "point_of_interest", "store"]
-        },
-        {
-            "geocoder_status": "OK",
-            "place_id": "ChIJv-EPNqyPGGARLALdlrCozq4",
-            "types": ["establishment", "point_of_interest", "store"]
-        }
+        { "geocoder_status": "OK", "place_id": "ChIJ___g0-iOGGAR67IAa0SVef8", "types": ["establishment", "food", "point_of_interest", "restaurant"] },
+        { "geocoder_status": "OK", "place_id": "ChIJfRHV7bePGGARGj9XA3yhlck", "types": ["establishment", "point_of_interest", "tourist_attraction"] },
+        { "geocoder_status": "OK", "place_id": "ChIJSUbyRsCOGGARpkF9ObX7ZUg", "types": ["establishment", "pet_store", "point_of_interest", "store"] },
+        { "geocoder_status": "OK", "place_id": "ChIJx6tZw8aOGGARvjsxV2u9ccc", "types": ["premise"] },
+        { "geocoder_status": "OK", "place_id": "ChIJ8awUL8GOGGARjfDbH69y2XU", "types": ["street_address"] },
+        { "geocoder_status": "OK", "place_id": "ChIJtdbUIcGOGGARhUUqA5vTi7M", "types": ["premise"] },
+        { "geocoder_status": "OK", "place_id": "ChIJv-EPNqyPGGARLALdlrCozq4", "types": ["establishment", "point_of_interest", "store"] },
+        { "geocoder_status": "OK", "place_id": "ChIJ___g0-iOGGAR67IAa0SVef8", "types": ["establishment", "food", "point_of_interest", "restaurant"] }
     ],
     "routes": [
         {
-            "bounds": {
-                "northeast": {
-                    "lat": 35.7172366,
-                    "lng": 139.7986358
-                },
-                "southwest": {
-                    "lat": 35.7108644,
-                    "lng": 139.7920579
-                }
-            },
-            "copyrights": "Map data ©2024 Google",
+            "bounds": { "northeast": { "lat": 35.7229575, "lng": 139.8018704 }, "southwest": { "lat": 35.7107122, "lng": 139.7920579 } },
+            "copyrights": "Map data ©2024",
             "legs": [
                 {
-                    "distance": {
-                        "text": "1 m",
-                        "value": 0
-                    },
-                    "duration": {
-                        "text": "1 min",
-                        "value": 0
-                    },
+                    "distance": { "text": "1.5 km", "value": 1460 },
+                    "duration": { "text": "6 mins", "value": 334 },
                     "end_address": "2 Chome-3 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "end_location": {
-                        "lat": 35.7135458,
-                        "lng": 139.796927
-                    },
-                    "start_address": "2 Chome-3 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "start_location": {
-                        "lat": 35.7135458,
-                        "lng": 139.796927
-                    },
+                    "end_location": { "lat": 35.7135458, "lng": 139.796927 },
+                    "start_address": "1 Chome-21 Higashiasakusa, Taito City, Tokyo 111-0025, Japan",
+                    "start_location": { "lat": 35.7228599, "lng": 139.8015096 },
                     "steps": [
                         {
-                            "distance": {
-                                "text": "1 m",
-                                "value": 0
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 0
-                            },
-                            "end_location": {
-                                "lat": 35.7135458,
-                                "lng": 139.796927
-                            },
-                            "html_instructions": "Head",
-                            "polyline": {
-                                "points": "uh~xEyagtY"
-                            },
-                            "start_location": {
-                                "lat": 35.7135458,
-                                "lng": 139.796927
-                            },
+                            "distance": { "text": "5 m", "value": 5 },
+                            "duration": { "text": "1 min", "value": 1 },
+                            "end_location": { "lat": 35.7229071, "lng": 139.8015031 },
+                            "html_instructions": "Head <b>north</b> on <b>吉野通り</b>/<wbr/><b>旧日光街道</b>/<wbr/><b>都道464号</b> toward <b>地方橋通り</b>",
+                            "polyline": { "points": "{b`yEm~gtYI@" },
+                            "start_location": { "lat": 35.7228599, "lng": 139.8015096 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "0.2 km", "value": 248 },
+                            "duration": { "text": "1 min", "value": 61 },
+                            "end_location": { "lat": 35.7228601, "lng": 139.7987958 },
+                            "html_instructions": "Turn <b>left</b> at <b>東浅草交番前（交差点）</b> onto <b>地方橋通り</b>",
+                            "maneuver": "turn-left",
+                            "polyline": { "points": "ec`yEk~gtYA|AA`BAnB?j@A`@?fAAP@H?H?B@D?J@B?@BDHL" },
+                            "start_location": { "lat": 35.7229071, "lng": 139.8015031 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "0.3 km", "value": 262 },
+                            "duration": { "text": "1 min", "value": 46 },
+                            "end_location": { "lat": 35.720797, "lng": 139.8001526 },
+                            "html_instructions": "Turn <b>left</b> onto <b>土手通り</b>",
+                            "maneuver": "turn-left",
+                            "polyline": { "points": "{b`yEomgtYLCJEr@]|@a@ROTObBmALKdAw@TQ@?@?BAN@" },
+                            "start_location": { "lat": 35.7228601, "lng": 139.7987958 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "0.8 km", "value": 836 },
+                            "duration": { "text": "3 mins", "value": 182 },
+                            "end_location": { "lat": 35.7134793, "lng": 139.7980319 },
+                            "html_instructions": "Continue onto <b>馬道通り</b>",
+                            "polyline": { "points": "_v_yE}ugtYl@Nt@PRDRDrBf@d@LbB`@rAT`ARx@NTD`ARnB\\D@l@J\\Ff@JjARdATn@JPBj@J\\Fx@L`@Fv@N`@FRBRD^F" },
+                            "start_location": { "lat": 35.720797, "lng": 139.8001526 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "55 m", "value": 55 },
+                            "duration": { "text": "1 min", "value": 27 },
+                            "end_location": { "lat": 35.7135885, "lng": 139.7975189 },
+                            "html_instructions": "Turn <b>right</b>",
+                            "maneuver": "turn-right",
+                            "polyline": { "points": "gh~xEuhgtYF@K~@?DMRA@AB?B" },
+                            "start_location": { "lat": 35.7134793, "lng": 139.7980319 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "54 m", "value": 54 },
+                            "duration": { "text": "1 min", "value": 17 },
+                            "end_location": { "lat": 35.7135458, "lng": 139.796927 },
+                            "html_instructions": "Turn <b>left</b>",
+                            "maneuver": "turn-left",
+                            "polyline": { "points": "}h~xEoegtYHr@@VCh@" },
+                            "start_location": { "lat": 35.7135885, "lng": 139.7975189 },
                             "travel_mode": "DRIVING"
                         }
                     ],
@@ -103,286 +85,120 @@
                     "via_waypoint": []
                 },
                 {
-                    "distance": {
-                        "text": "1.5 km",
-                        "value": 1514
-                    },
-                    "duration": {
-                        "text": "7 mins",
-                        "value": 425
-                    },
+                    "distance": { "text": "1.5 km", "value": 1514 },
+                    "duration": { "text": "7 mins", "value": 425 },
                     "end_address": "2-chōme-7-13 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "end_location": {
-                        "lat": 35.71475030000001,
-                        "lng": 139.7952355
-                    },
+                    "end_location": { "lat": 35.71475030000001, "lng": 139.7952355 },
                     "start_address": "2 Chome-3 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "start_location": {
-                        "lat": 35.7135458,
-                        "lng": 139.796927
-                    },
+                    "start_location": { "lat": 35.7135458, "lng": 139.796927 },
                     "steps": [
                         {
-                            "distance": {
-                                "text": "54 m",
-                                "value": 54
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 14
-                            },
-                            "end_location": {
-                                "lat": 35.7135885,
-                                "lng": 139.7975189
-                            },
+                            "distance": { "text": "54 m", "value": 54 },
+                            "duration": { "text": "1 min", "value": 14 },
+                            "end_location": { "lat": 35.7135885, "lng": 139.7975189 },
                             "html_instructions": "Head <b>east</b>",
-                            "polyline": {
-                                "points": "uh~xEyagtYBi@AWIs@"
-                            },
-                            "start_location": {
-                                "lat": 35.7135458,
-                                "lng": 139.796927
-                            },
+                            "polyline": { "points": "uh~xEyagtYBi@AWIs@" },
+                            "start_location": { "lat": 35.7135458, "lng": 139.796927 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "50 m",
-                                "value": 50
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 18
-                            },
-                            "end_location": {
-                                "lat": 35.7134365,
-                                "lng": 139.7980213
-                            },
+                            "distance": { "text": "50 m", "value": 50 },
+                            "duration": { "text": "1 min", "value": 18 },
+                            "end_location": { "lat": 35.7134365, "lng": 139.7980213 },
                             "html_instructions": "Turn <b>right</b> toward <b>馬道通り</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "}h~xEoegtY?C@C@ALS?EJ_A"
-                            },
-                            "start_location": {
-                                "lat": 35.7135885,
-                                "lng": 139.7975189
-                            },
+                            "polyline": { "points": "}h~xEoegtY?C@C@ALS?EJ_A" },
+                            "start_location": { "lat": 35.7135885, "lng": 139.7975189 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.3 km",
-                                "value": 269
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 83
-                            },
-                            "end_location": {
-                                "lat": 35.7158002,
-                                "lng": 139.7986358
-                            },
+                            "distance": { "text": "0.3 km", "value": 269 },
+                            "duration": { "text": "1 min", "value": 83 },
+                            "end_location": { "lat": 35.7158002, "lng": 139.7986358 },
                             "html_instructions": "Turn <b>left</b> onto <b>馬道通り</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "_h~xEshgtYGA_@GSESCa@Gw@Oa@Gy@M]Gk@KQCo@KeAU"
-                            },
-                            "start_location": {
-                                "lat": 35.7134365,
-                                "lng": 139.7980213
-                            },
+                            "polyline": { "points": "_h~xEshgtYGA_@GSESCa@Gw@Oa@Gy@M]Gk@KQCo@KeAU" },
+                            "start_location": { "lat": 35.7134365, "lng": 139.7980213 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.5 km",
-                                "value": 535
-                            },
-                            "duration": {
-                                "text": "2 mins",
-                                "value": 106
-                            },
-                            "end_location": {
-                                "lat": 35.7172366,
-                                "lng": 139.7929852
-                            },
+                            "distance": { "text": "0.5 km", "value": 535 },
+                            "duration": { "text": "2 mins", "value": 106 },
+                            "end_location": { "lat": 35.7172366, "lng": 139.7929852 },
                             "html_instructions": "Turn <b>left</b> at <b>馬道（交差点）</b> onto <b>言問通り</b>/<wbr/><b>都道319号</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "wv~xEolgtYIj@Ih@ETCNG`@Gd@EZEPc@pCABG^O|@Kp@Ib@G\\Mz@WvAAJ[jBG^CNIh@CJIf@Oz@Qx@"
-                            },
-                            "start_location": {
-                                "lat": 35.7158002,
-                                "lng": 139.7986358
-                            },
+                            "polyline": { "points": "wv~xEolgtYIj@Ih@ETCNG`@Gd@EZEPc@pCABG^O|@Kp@Ib@G\\Mz@WvAAJ[jBG^CNIh@CJIf@Oz@Qx@" },
+                            "start_location": { "lat": 35.7158002, "lng": 139.7986358 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.2 km",
-                                "value": 245
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 58
-                            },
-                            "end_location": {
-                                "lat": 35.7152169,
-                                "lng": 139.7926306
-                            },
+                            "distance": { "text": "0.2 km", "value": 245 },
+                            "duration": { "text": "1 min", "value": 58 },
+                            "end_location": { "lat": 35.7152169, "lng": 139.7926306 },
                             "html_instructions": "Turn <b>left</b> onto <b>国際通り</b>/<wbr/><b>都道462号</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "w__yEeiftY?l@tCHxADx@Bb@@b@@J?T@"
-                            },
-                            "start_location": {
-                                "lat": 35.7172366,
-                                "lng": 139.7929852
-                            },
+                            "polyline": { "points": "w__yEeiftY?l@tCHxADx@Bb@@b@@J?T@" },
+                            "start_location": { "lat": 35.7172366, "lng": 139.7929852 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.1 km",
-                                "value": 103
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 46
-                            },
-                            "end_location": {
-                                "lat": 35.71531270000001,
-                                "lng": 139.7937657
-                            },
+                            "distance": { "text": "0.1 km", "value": 103 },
+                            "duration": { "text": "1 min", "value": 46 },
+                            "end_location": { "lat": 35.71531270000001, "lng": 139.7937657 },
                             "html_instructions": "Turn <b>left</b> toward <b>ホッピー通り</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "cs~xE}fftYC{@AOAOCaAC_@Ae@"
-                            },
-                            "start_location": {
-                                "lat": 35.7152169,
-                                "lng": 139.7926306
-                            },
+                            "polyline": { "points": "cs~xE}fftYC{@AOAOCaAC_@Ae@" },
+                            "start_location": { "lat": 35.7152169, "lng": 139.7926306 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.1 km",
-                                "value": 114
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 50
-                            },
-                            "end_location": {
-                                "lat": 35.7143922,
-                                "lng": 139.7940863
-                            },
+                            "distance": { "text": "0.1 km", "value": 114 },
+                            "duration": { "text": "1 min", "value": 50 },
+                            "end_location": { "lat": 35.7143922, "lng": 139.7940863 },
                             "html_instructions": "Turn <b>right</b> onto <b>ホッピー通り</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "us~xEanftYASJAhAQp@KVEXE"
-                            },
-                            "start_location": {
-                                "lat": 35.71531270000001,
-                                "lng": 139.7937657
-                            },
+                            "polyline": { "points": "us~xEanftYASJAhAQp@KVEXE" },
+                            "start_location": { "lat": 35.71531270000001, "lng": 139.7937657 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "75 m",
-                                "value": 75
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 22
-                            },
-                            "end_location": {
-                                "lat": 35.7145281,
-                                "lng": 139.7948977
-                            },
+                            "distance": { "text": "75 m", "value": 75 },
+                            "duration": { "text": "1 min", "value": 22 },
+                            "end_location": { "lat": 35.7145281, "lng": 139.7948977 },
                             "html_instructions": "Turn <b>left</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "}m~xEapftYI_ACMKmAAE"
-                            },
-                            "start_location": {
-                                "lat": 35.7143922,
-                                "lng": 139.7940863
-                            },
+                            "polyline": { "points": "}m~xEapftYI_ACMKmAAE" },
+                            "start_location": { "lat": 35.7143922, "lng": 139.7940863 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "26 m",
-                                "value": 26
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 10
-                            },
-                            "end_location": {
-                                "lat": 35.7147558,
-                                "lng": 139.794834
-                            },
+                            "distance": { "text": "26 m", "value": 26 },
+                            "duration": { "text": "1 min", "value": 10 },
+                            "end_location": { "lat": 35.7147558, "lng": 139.794834 },
                             "html_instructions": "Turn <b>left</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "yn~xEcuftYWDE@E@E@C@"
-                            },
-                            "start_location": {
-                                "lat": 35.7145281,
-                                "lng": 139.7948977
-                            },
+                            "polyline": { "points": "yn~xEcuftYWDE@E@E@C@" },
+                            "start_location": { "lat": 35.7145281, "lng": 139.7948977 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "36 m",
-                                "value": 36
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 12
-                            },
-                            "end_location": {
-                                "lat": 35.714814,
-                                "lng": 139.7952229
-                            },
+                            "distance": { "text": "36 m", "value": 36 },
+                            "duration": { "text": "1 min", "value": 12 },
+                            "end_location": { "lat": 35.714814, "lng": 139.7952229 },
                             "html_instructions": "Turn <b>right</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "gp~xEutftYImA"
-                            },
-                            "start_location": {
-                                "lat": 35.7147558,
-                                "lng": 139.794834
-                            },
+                            "polyline": { "points": "gp~xEutftYImA" },
+                            "start_location": { "lat": 35.7147558, "lng": 139.794834 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "7 m",
-                                "value": 7
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 6
-                            },
-                            "end_location": {
-                                "lat": 35.71475030000001,
-                                "lng": 139.7952355
-                            },
+                            "distance": { "text": "7 m", "value": 7 },
+                            "duration": { "text": "1 min", "value": 6 },
+                            "end_location": { "lat": 35.71475030000001, "lng": 139.7952355 },
                             "html_instructions": "Turn <b>right</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "qp~xEcwftYJC"
-                            },
-                            "start_location": {
-                                "lat": 35.714814,
-                                "lng": 139.7952229
-                            },
+                            "polyline": { "points": "qp~xEcwftYJC" },
+                            "start_location": { "lat": 35.714814, "lng": 139.7952229 },
                             "travel_mode": "DRIVING"
                         }
                     ],
@@ -390,190 +206,80 @@
                     "via_waypoint": []
                 },
                 {
-                    "distance": {
-                        "text": "1.2 km",
-                        "value": 1165
-                    },
-                    "duration": {
-                        "text": "6 mins",
-                        "value": 372
-                    },
+                    "distance": { "text": "1.2 km", "value": 1165 },
+                    "duration": { "text": "6 mins", "value": 372 },
                     "end_address": "1-chōme-2-5 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "end_location": {
-                        "lat": 35.711148,
-                        "lng": 139.7965088
-                    },
+                    "end_location": { "lat": 35.711148, "lng": 139.7965088 },
                     "start_address": "2-chōme-7-13 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "start_location": {
-                        "lat": 35.71475030000001,
-                        "lng": 139.7952355
-                    },
+                    "start_location": { "lat": 35.71475030000001, "lng": 139.7952355 },
                     "steps": [
                         {
-                            "distance": {
-                                "text": "7 m",
-                                "value": 7
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 2
-                            },
-                            "end_location": {
-                                "lat": 35.714814,
-                                "lng": 139.7952229
-                            },
+                            "distance": { "text": "7 m", "value": 7 },
+                            "duration": { "text": "1 min", "value": 2 },
+                            "end_location": { "lat": 35.714814, "lng": 139.7952229 },
                             "html_instructions": "Head <b>north</b>",
-                            "polyline": {
-                                "points": "ep~xEgwftYKB"
-                            },
-                            "start_location": {
-                                "lat": 35.71475030000001,
-                                "lng": 139.7952355
-                            },
+                            "polyline": { "points": "ep~xEgwftYKB" },
+                            "start_location": { "lat": 35.71475030000001, "lng": 139.7952355 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.1 km",
-                                "value": 109
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 32
-                            },
-                            "end_location": {
-                                "lat": 35.7146368,
-                                "lng": 139.7940325
-                            },
+                            "distance": { "text": "0.1 km", "value": 109 },
+                            "duration": { "text": "1 min", "value": 32 },
+                            "end_location": { "lat": 35.7146368, "lng": 139.7940325 },
                             "html_instructions": "Turn <b>left</b> toward <b>ホッピー通り</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "qp~xEcwftYHlAJnAJnA"
-                            },
-                            "start_location": {
-                                "lat": 35.714814,
-                                "lng": 139.7952229
-                            },
+                            "polyline": { "points": "qp~xEcwftYHlAJnAJnA" },
+                            "start_location": { "lat": 35.714814, "lng": 139.7952229 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "77 m",
-                                "value": 77
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 36
-                            },
-                            "end_location": {
-                                "lat": 35.7153181,
-                                "lng": 139.7938691
-                            },
+                            "distance": { "text": "77 m", "value": 77 },
+                            "duration": { "text": "1 min", "value": 36 },
+                            "end_location": { "lat": 35.7153181, "lng": 139.7938691 },
                             "html_instructions": "Turn <b>right</b> onto <b>ホッピー通り</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "oo~xEuoftYq@JiAPK@"
-                            },
-                            "start_location": {
-                                "lat": 35.7146368,
-                                "lng": 139.7940325
-                            },
+                            "polyline": { "points": "oo~xEuoftYq@JiAPK@" },
+                            "start_location": { "lat": 35.7146368, "lng": 139.7940325 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.1 km",
-                                "value": 112
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 51
-                            },
-                            "end_location": {
-                                "lat": 35.7152169,
-                                "lng": 139.7926306
-                            },
+                            "distance": { "text": "0.1 km", "value": 112 },
+                            "duration": { "text": "1 min", "value": 51 },
+                            "end_location": { "lat": 35.7152169, "lng": 139.7926306 },
                             "html_instructions": "Turn <b>left</b> toward <b>国際通り</b>/<wbr/><b>都道462号</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "ws~xEunftY@R@d@B^B`A@N@NBz@"
-                            },
-                            "start_location": {
-                                "lat": 35.7153181,
-                                "lng": 139.7938691
-                            },
+                            "polyline": { "points": "ws~xEunftY@R@d@B^B`A@N@NBz@" },
+                            "start_location": { "lat": 35.7153181, "lng": 139.7938691 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.4 km",
-                                "value": 424
-                            },
-                            "duration": {
-                                "text": "2 mins",
-                                "value": 105
-                            },
-                            "end_location": {
-                                "lat": 35.7114324,
-                                "lng": 139.7920579
-                            },
+                            "distance": { "text": "0.4 km", "value": 424 },
+                            "duration": { "text": "2 mins", "value": 105 },
+                            "end_location": { "lat": 35.7114324, "lng": 139.7920579 },
                             "html_instructions": "Turn <b>left</b> onto <b>国際通り</b>/<wbr/><b>都道462号</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "cs~xE}fftYV?V@nA@TBZ@N@f@Fx@Hb@FH@XBXBp@Hd@Db@DNB`@DL@h@FL@B?XDr@Hh@D"
-                            },
-                            "start_location": {
-                                "lat": 35.7152169,
-                                "lng": 139.7926306
-                            },
+                            "polyline": { "points": "cs~xE}fftYV?V@nA@TBZ@N@f@Fx@Hb@FH@XBXBp@Hd@Db@DNB`@DL@h@FL@B?XDr@Hh@D" },
+                            "start_location": { "lat": 35.7152169, "lng": 139.7926306 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.4 km",
-                                "value": 404
-                            },
-                            "duration": {
-                                "text": "2 mins",
-                                "value": 133
-                            },
-                            "end_location": {
-                                "lat": 35.7108644,
-                                "lng": 139.7964807
-                            },
+                            "distance": { "text": "0.4 km", "value": 404 },
+                            "duration": { "text": "2 mins", "value": 133 },
+                            "end_location": { "lat": 35.7108644, "lng": 139.7964807 },
                             "html_instructions": "Turn <b>left</b> at <b>雷門一丁目（交差点）</b> onto <b>雷門通り</b> (signs for <b>Asakusa Pk</b>/<wbr/><b>Asakusa Public Hall</b>/<wbr/><b>Sensoji Temple</b>)",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "m{}xEkcftYHkABa@B]BY@ULoBB[Dq@@CNcCDo@NsBDu@JaB@A?I@G?GBY"
-                            },
-                            "start_location": {
-                                "lat": 35.7114324,
-                                "lng": 139.7920579
-                            },
+                            "polyline": { "points": "m{}xEkcftYHkABa@B]BY@ULoBB[Dq@@CNcCDo@NsBDu@JaB@A?I@G?GBY" },
+                            "start_location": { "lat": 35.7114324, "lng": 139.7920579 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "32 m",
-                                "value": 32
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 13
-                            },
-                            "end_location": {
-                                "lat": 35.711148,
-                                "lng": 139.7965088
-                            },
-                            "html_instructions": "Turn <b>left</b> at <b>雷門（交差点）</b><div style=\"font-size:0.9em\">Closed 10:00 AM – 10:00 PM</div><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                            "distance": { "text": "32 m", "value": 32 },
+                            "duration": { "text": "1 min", "value": 13 },
+                            "end_location": { "lat": 35.711148, "lng": 139.7965088 },
+                            "html_instructions": "Turn <b>left</b> at <b>雷門（交差点）</b><div style=\"font-size:0.9em\">Closed 10:00\u202fAM\u2009–\u200910:00\u202fPM</div><div style=\"font-size:0.9em\">Destination will be on the right</div>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "{w}xE__gtY_@CKAM?"
-                            },
-                            "start_location": {
-                                "lat": 35.7108644,
-                                "lng": 139.7964807
-                            },
+                            "polyline": { "points": "{w}xE__gtY_@CKAM?" },
+                            "start_location": { "lat": 35.7108644, "lng": 139.7964807 },
                             "travel_mode": "DRIVING"
                         }
                     ],
@@ -581,166 +287,70 @@
                     "via_waypoint": []
                 },
                 {
-                    "distance": {
-                        "text": "0.6 km",
-                        "value": 558
-                    },
-                    "duration": {
-                        "text": "4 mins",
-                        "value": 210
-                    },
+                    "distance": { "text": "0.6 km", "value": 558 },
+                    "duration": { "text": "4 mins", "value": 210 },
                     "end_address": "1-chōme-31-31-12 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "end_location": {
-                        "lat": 35.7124364,
-                        "lng": 139.7963388
-                    },
+                    "end_location": { "lat": 35.7124364, "lng": 139.7963388 },
                     "start_address": "1-chōme-2-5 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "start_location": {
-                        "lat": 35.711148,
-                        "lng": 139.7965088
-                    },
+                    "start_location": { "lat": 35.711148, "lng": 139.7965088 },
                     "steps": [
                         {
-                            "distance": {
-                                "text": "32 m",
-                                "value": 32
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 13
-                            },
-                            "end_location": {
-                                "lat": 35.7108644,
-                                "lng": 139.7964807
-                            },
-                            "html_instructions": "Head <b>south</b> toward <b>雷門通り</b><div style=\"font-size:0.9em\">Closed 10:00 AM – 10:00 PM</div>",
-                            "polyline": {
-                                "points": "uy}xEe_gtYL?J@^B"
-                            },
-                            "start_location": {
-                                "lat": 35.711148,
-                                "lng": 139.7965088
-                            },
+                            "distance": { "text": "32 m", "value": 32 },
+                            "duration": { "text": "1 min", "value": 13 },
+                            "end_location": { "lat": 35.7108644, "lng": 139.7964807 },
+                            "html_instructions": "Head <b>south</b> toward <b> 雷門通り</b><div style=\"font-size:0.9em\">Closed 10:00\u202fAM\u2009–\u200910:00\u202fPM</div>",
+                            "polyline": { "points": "uy}xEe_gtYL?J@^B" },
+                            "start_location": { "lat": 35.711148, "lng": 139.7965088 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.2 km",
-                                "value": 169
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 53
-                            },
-                            "end_location": {
-                                "lat": 35.7110971,
-                                "lng": 139.7946323
-                            },
+                            "distance": { "text": "0.2 km", "value": 169 },
+                            "duration": { "text": "1 min", "value": 53 },
+                            "end_location": { "lat": 35.7110971, "lng": 139.7946323 },
                             "html_instructions": "Turn <b>right</b> at <b>雷門（交差点）</b> onto <b>雷門通り</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "{w}xE__gtYCX?FAF?HA@K`BEt@OrBEn@"
-                            },
-                            "start_location": {
-                                "lat": 35.7108644,
-                                "lng": 139.7964807
-                            },
+                            "polyline": { "points": "{w}xE__gtYCX?FAF?HA@K`BEt@OrBEn@" },
+                            "start_location": { "lat": 35.7108644, "lng": 139.7964807 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "0.2 km",
-                                "value": 197
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 70
-                            },
-                            "end_location": {
-                                "lat": 35.7128433,
-                                "lng": 139.795
-                            },
+                            "distance": { "text": "0.2 km", "value": 197 },
+                            "duration": { "text": "1 min", "value": 70 },
+                            "end_location": { "lat": 35.7128433, "lng": 139.795 },
                             "html_instructions": "Turn <b>right</b> at <b>浅草一丁目（交差点）</b> onto <b>オレンジ通り</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "ky}xEmsftYeAOIAk@G[Ec@Gi@ISCaBS"
-                            },
-                            "start_location": {
-                                "lat": 35.7110971,
-                                "lng": 139.7946323
-                            },
+                            "polyline": { "points": "ky}xEmsftYeAOIAk@G[Ec@Gi@ISCaBS" },
+                            "start_location": { "lat": 35.7110971, "lng": 139.7946323 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "63 m",
-                                "value": 63
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 32
-                            },
-                            "end_location": {
-                                "lat": 35.7128295,
-                                "lng": 139.7956983
-                            },
+                            "distance": { "text": "63 m", "value": 63 },
+                            "duration": { "text": "1 min", "value": 32 },
+                            "end_location": { "lat": 35.7128295, "lng": 139.7956983 },
                             "html_instructions": "Turn <b>right</b> onto <b>伝法院通</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "gd~xEwuftY@kC"
-                            },
-                            "start_location": {
-                                "lat": 35.7128433,
-                                "lng": 139.795
-                            },
+                            "polyline": { "points": "gd~xEwuftY@kC" },
+                            "start_location": { "lat": 35.7128433, "lng": 139.795 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "34 m",
-                                "value": 34
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 27
-                            },
-                            "end_location": {
-                                "lat": 35.7125254,
-                                "lng": 139.7956532
-                            },
+                            "distance": { "text": "34 m", "value": 34 },
+                            "duration": { "text": "1 min", "value": 27 },
+                            "end_location": { "lat": 35.7125254, "lng": 139.7956532 },
                             "html_instructions": "Turn <b>right</b> onto <b>浅草中央通り</b>",
                             "maneuver": "turn-right",
-                            "polyline": {
-                                "points": "ed~xEczftYz@H"
-                            },
-                            "start_location": {
-                                "lat": 35.7128295,
-                                "lng": 139.7956983
-                            },
+                            "polyline": { "points": "ed~xEczftYz@H" },
+                            "start_location": { "lat": 35.7128295, "lng": 139.7956983 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "63 m",
-                                "value": 63
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 15
-                            },
-                            "end_location": {
-                                "lat": 35.7124364,
-                                "lng": 139.7963388
-                            },
-                            "html_instructions": "Turn <b>left</b><div style=\"font-size:0.9em\">Closed 10:00 AM – 10:00 PM</div><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                            "distance": { "text": "63 m", "value": 63 },
+                            "duration": { "text": "1 min", "value": 15 },
+                            "end_location": { "lat": 35.7124364, "lng": 139.7963388 },
+                            "html_instructions": "Turn <b>left</b><div style=\"font-size:0.9em\">Closed 10:00\u202fAM\u2009–\u200910:00\u202fPM</div><div style=\"font-size:0.9em\">Destination will be on the right</div>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "ib~xEyyftYJuADs@"
-                            },
-                            "start_location": {
-                                "lat": 35.7125254,
-                                "lng": 139.7956532
-                            },
+                            "polyline": { "points": "ib~xEyyftYJuADs@" },
+                            "start_location": { "lat": 35.7125254, "lng": 139.7956532 },
                             "travel_mode": "DRIVING"
                         }
                     ],
@@ -748,93 +358,39 @@
                     "via_waypoint": []
                 },
                 {
-                    "distance": {
-                        "text": "86 m",
-                        "value": 86
-                    },
-                    "duration": {
-                        "text": "1 min",
-                        "value": 30
-                    },
+                    "distance": { "text": "86 m", "value": 86 },
+                    "duration": { "text": "1 min", "value": 30 },
                     "end_address": "2-chōme-3-4 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "end_location": {
-                        "lat": 35.7128304,
-                        "lng": 139.7960209
-                    },
+                    "end_location": { "lat": 35.7128304, "lng": 139.7960209 },
                     "start_address": "1-chōme-31-31-12 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "start_location": {
-                        "lat": 35.7124364,
-                        "lng": 139.7963388
-                    },
+                    "start_location": { "lat": 35.7124364, "lng": 139.7963388 },
                     "steps": [
                         {
-                            "distance": {
-                                "text": "4 m",
-                                "value": 4
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 1
-                            },
-                            "end_location": {
-                                "lat": 35.7124312,
-                                "lng": 139.7963859
-                            },
-                            "html_instructions": "Head <b>east</b><div style=\"font-size:0.9em\">Closed 10:00 AM – 10:00 PM</div>",
-                            "polyline": {
-                                "points": "wa~xEc~ftY@I"
-                            },
-                            "start_location": {
-                                "lat": 35.7124364,
-                                "lng": 139.7963388
-                            },
+                            "distance": { "text": "4 m", "value": 4 },
+                            "duration": { "text": "1 min", "value": 1 },
+                            "end_location": { "lat": 35.7124312, "lng": 139.7963859 },
+                            "html_instructions": "Head <b>east</b><div style=\"font-size:0.9em\">Closed 10:00\u202fAM\u2009–\u200910:00\u202fPM</div>",
+                            "polyline": { "points": "wa~xEc~ftY@I" },
+                            "start_location": { "lat": 35.7124364, "lng": 139.7963388 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "45 m",
-                                "value": 45
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 15
-                            },
-                            "end_location": {
-                                "lat": 35.7128379,
-                                "lng": 139.7964319
-                            },
+                            "distance": { "text": "45 m", "value": 45 },
+                            "duration": { "text": "1 min", "value": 15 },
+                            "end_location": { "lat": 35.7128379, "lng": 139.7964319 },
                             "html_instructions": "Turn <b>left</b> toward <b>伝法院通</b>",
                             "maneuver": "turn-left",
-                            "polyline": {
-                                "points": "ua~xEm~ftYqAG"
-                            },
-                            "start_location": {
-                                "lat": 35.7124312,
-                                "lng": 139.7963859
-                            },
+                            "polyline": { "points": "ua~xEm~ftYqAG" },
+                            "start_location": { "lat": 35.7124312, "lng": 139.7963859 },
                             "travel_mode": "DRIVING"
                         },
                         {
-                            "distance": {
-                                "text": "37 m",
-                                "value": 37
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 14
-                            },
-                            "end_location": {
-                                "lat": 35.7128304,
-                                "lng": 139.7960209
-                            },
+                            "distance": { "text": "37 m", "value": 37 },
+                            "duration": { "text": "1 min", "value": 14 },
+                            "end_location": { "lat": 35.7128304, "lng": 139.7960209 },
                             "html_instructions": "Continue onto <b>伝法院通</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
-                            "polyline": {
-                                "points": "gd~xEu~ftY@pA"
-                            },
-                            "start_location": {
-                                "lat": 35.7128379,
-                                "lng": 139.7964319
-                            },
+                            "polyline": { "points": "gd~xEu~ftY@pA" },
+                            "start_location": { "lat": 35.7128379, "lng": 139.7964319 },
                             "travel_mode": "DRIVING"
                         }
                     ],
@@ -842,46 +398,20 @@
                     "via_waypoint": []
                 },
                 {
-                    "distance": {
-                        "text": "0.2 km",
-                        "value": 212
-                    },
-                    "duration": {
-                        "text": "1 min",
-                        "value": 54
-                    },
+                    "distance": { "text": "0.2 km", "value": 217 },
+                    "duration": { "text": "1 min", "value": 55 },
                     "end_address": "1-chōme-18-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "end_location": {
-                        "lat": 35.71127,
-                        "lng": 139.7962656
-                    },
+                    "end_location": { "lat": 35.7112251, "lng": 139.7962512 },
                     "start_address": "2-chōme-3-4 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "start_location": {
-                        "lat": 35.7128304,
-                        "lng": 139.7960209
-                    },
+                    "start_location": { "lat": 35.7128304, "lng": 139.7960209 },
                     "steps": [
                         {
-                            "distance": {
-                                "text": "0.2 km",
-                                "value": 212
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 54
-                            },
-                            "end_location": {
-                                "lat": 35.71127,
-                                "lng": 139.7962656
-                            },
-                            "html_instructions": "Head <b>east</b> on <b>伝法院通</b> toward <b>新仲見世</b><div style=\"font-size:0.9em\">Parts of this road are closed 10:00 AM – 10:00 PM</div><div style=\"font-size:0.9em\">Destination will be on the left</div>",
-                            "polyline": {
-                                "points": "ed~xEc|ftYAqApAFH@P@R@F@\\@ZB\\@B?^B`@@P@"
-                            },
-                            "start_location": {
-                                "lat": 35.7128304,
-                                "lng": 139.7960209
-                            },
+                            "distance": { "text": "0.2 km", "value": 217 },
+                            "duration": { "text": "1 min", "value": 55 },
+                            "end_location": { "lat": 35.7112251, "lng": 139.7962512 },
+                            "html_instructions": "Head <b>east</b> on <b>伝法院通</b> toward <b>新仲見世</b><div style=\"font-size:0.9em\">Parts of this road are closed 10:00\u202fAM\u2009–\u200910:00\u202fPM</div><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "polyline": { "points": "ed~xEc|ftYAqApAFH@P@R@F@\\@ZB\\@B?^B`@@VB@??@" },
+                            "start_location": { "lat": 35.7128304, "lng": 139.7960209 },
                             "travel_mode": "DRIVING"
                         }
                     ],
@@ -889,46 +419,66 @@
                     "via_waypoint": []
                 },
                 {
-                    "distance": {
-                        "text": "1 m",
-                        "value": 0
-                    },
-                    "duration": {
-                        "text": "1 min",
-                        "value": 0
-                    },
-                    "end_address": "1-chōme-18-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "end_location": {
-                        "lat": 35.71127,
-                        "lng": 139.7962656
-                    },
+                    "distance": { "text": "1.8 km", "value": 1790 },
+                    "duration": { "text": "7 mins", "value": 442 },
+                    "end_address": "1 Chome-21 Higashiasakusa, Taito City, Tokyo 111-0025, Japan",
+                    "end_location": { "lat": 35.7228599, "lng": 139.8015096 },
                     "start_address": "1-chōme-18-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
-                    "start_location": {
-                        "lat": 35.71127,
-                        "lng": 139.7962656
-                    },
+                    "start_location": { "lat": 35.7112251, "lng": 139.7962512 },
                     "steps": [
                         {
-                            "distance": {
-                                "text": "1 m",
-                                "value": 0
-                            },
-                            "duration": {
-                                "text": "1 min",
-                                "value": 0
-                            },
-                            "end_location": {
-                                "lat": 35.71127,
-                                "lng": 139.7962656
-                            },
-                            "html_instructions": "Head",
-                            "polyline": {
-                                "points": "mz}xEu}ftY"
-                            },
-                            "start_location": {
-                                "lat": 35.71127,
-                                "lng": 139.7962656
-                            },
+                            "distance": { "text": "70 m", "value": 70 },
+                            "duration": { "text": "1 min", "value": 17 },
+                            "end_location": { "lat": 35.7113057, "lng": 139.7954859 },
+                            "html_instructions": "Head <b>west</b> toward <b>浅草中央通り</b><div style=\"font-size:0.9em\">Parts of this road are closed 10:00\u202fAM\u2009–\u200910:00\u202fPM</div>",
+                            "polyline": { "points": "ez}xEq}ftY@??@?@AB?PO|B" },
+                            "start_location": { "lat": 35.7112251, "lng": 139.7962512 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "35 m", "value": 35 },
+                            "duration": { "text": "1 min", "value": 17 },
+                            "end_location": { "lat": 35.7109938, "lng": 139.7954495 },
+                            "html_instructions": "Turn <b>left</b> onto <b>浅草中央通り</b>",
+                            "maneuver": "turn-left",
+                            "polyline": { "points": "uz}xEyxftYr@FJ?" },
+                            "start_location": { "lat": 35.7113057, "lng": 139.7954859 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "0.2 km", "value": 206 },
+                            "duration": { "text": "2 mins", "value": 93 },
+                            "end_location": { "lat": 35.7107122, "lng": 139.7977038 },
+                            "html_instructions": "Turn <b>left</b> onto <b>雷門通り</b>",
+                            "maneuver": "turn-left",
+                            "polyline": { "points": "ux}xEqxftYDu@JaB@A?I@G?GBYHcB@K@S@KLcB" },
+                            "start_location": { "lat": 35.7109938, "lng": 139.7954495 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "0.6 km", "value": 614 },
+                            "duration": { "text": "3 mins", "value": 154 },
+                            "end_location": { "lat": 35.7151129, "lng": 139.8017886 },
+                            "html_instructions": "Turn <b>left</b> at <b>吾妻橋（交差点）</b> onto <b>江戸通り</b>/<wbr/><b>国道6号</b>",
+                            "maneuver": "turn-left",
+                            "polyline": { "points": "}v}xEsfgtYQMQMCCAAQMAACCMIWUUQKKUQ]YMI]YMMQMIIMIa@[MKQOSUOOQQMQ[_@SUqAyAu@{@sAgAWUMMKIa@]e@a@aAy@" },
+                            "start_location": { "lat": 35.7107122, "lng": 139.7977038 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "0.9 km", "value": 865 },
+                            "duration": { "text": "3 mins", "value": 161 },
+                            "end_location": { "lat": 357038 },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": { "text": "0.9 km", "value": 865 },
+                            "duration": { "text": "3 mins", "value": 161 },
+                            "end_location": { "lat": 35.7228599, "lng": 139.8015096 },
+                            "html_instructions": "Slight <b>left</b> at <b>言問橋西（交差点）</b> onto <b>旧日光街道</b>/<wbr/><b>都道464号</b>",
+                            "maneuver": "turn-slight-left",
+                            "polyline": { "points": "mr~xEe`htYs@EEFKAsA?aAAcAAiAAoA?qBAoAAW?q@?aAAK?g@AK@gBC[@MAK?G?SBS?gAHS@eAHi@Dq@DU@cBL_CP" },
+                            "start_location": { "lat": 35.7151129, "lng": 139.8017886 },
                             "travel_mode": "DRIVING"
                         }
                     ],
@@ -937,9 +487,9 @@
                 }
             ],
             "overview_polyline": {
-                "points": "uh~xEyagtY@aAIw@BELS?EJ_AGAs@MoCc@uCe@uBa@StAYlBq@bE}ApJq@dEo@hD?l@tCHrCHhBDK}CEeAASJAzB]p@K[aDi@JC@ImAJCKBT|CJnAq@JuARBx@J`CBz@V?fBBhBN`CV~Fl@~APh@DHkAF_AV{D\\iFh@aIk@EM?L?j@DC`@OtBUhDEn@eAOu@I_AM}@MaBS@kCz@HJuAF}@qAG@pAAqApAFZBZBzAFrAF"
+                "points": "{b`yEm~gtYI@A|ACpECfDB\\DVHLLC~@c@pAq@xB}AjBuADAN@l@NhAVfCl@hCn@tCh@`GfAxB`@rEx@dDh@`C`@f@HKdAOTAFJjACh@Bi@KkA@GNUJeAoASuDm@kCc@eAUIj@O~@YrBs@fEqB|LYdBYbBQx@?l@nFN|ADn@@T@C{@C_@GaBCy@tAShAQXEI_AO{AAEWDKBIBImAJCKBHlAV~C{B\\K@@RDdAJ|Cn@@dBDlCT`BPrFj@zBTTeD`A_ORcD@OBY_@CYAX@^BCXANSbDUbDoAQuC_@uBW@kCz@HPiC@IqAG@pAAqAzAHjAF|AHz@D@BQtC~@FPwCB[P}CNoBc@[YUmCwBeCqBgAgAoCaDu@{@sAgAe@c@uCcCs@EEFaDCkPI}EC{F^kHf@"
             },
-            "summary": "",
+            "summary": "馬道通り",
             "warnings": [],
             "waypoint_order": [0, 1, 2, 3, 4, 5]
         }

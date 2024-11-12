@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, Polyline } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, Polyline, useMap, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import L from "leaflet";
@@ -11,21 +11,21 @@ const apiEndpoint = "http://localhost:8000/api";
 // const apiEndpoint = "http://smagomap-api.mryutaro.site/api";
 const zoomLevel = 20;
 
-// interface MapComponentProps {
-//     position: LatLngExpression;
-// }
+interface MapComponentProps {
+    position: LatLngExpression;
+}
 
-// const MapComponent: React.FC<MapComponentProps> = ({ position }) => {
-//     const map = useMap();
+const MapComponent: React.FC<MapComponentProps> = ({ position }) => {
+    const map = useMap();
 
-//     useEffect(() => {
-//         if (position) {
-//             map.setView(position, zoomLevel);
-//         }
-//     }, [map, position]);
+    useEffect(() => {
+        if (position) {
+            map.setView(position, zoomLevel);
+        }
+    }, [map, position]);
 
-//     return null;
-// };
+    return null;
+};
 
 const MapClickHandler: React.FC<{ setClickedPosition: (pos: LatLngExpression) => void; addRequest: (pos: LatLngExpression) => void }> = ({
     setClickedPosition,
@@ -108,11 +108,33 @@ const Map: React.FC = () => {
     useEffect(() => {
         const fetchRoute = async () => {
             try {
-                const response = await fetch(apiEndpoint + "/route");
-                const data = await response.json();
-                const decodedRoute = polyline.decode(data.polyline_points);
-                console.log("Decoded Route:", decodedRoute);
-                setRoute(decodedRoute);
+                // 現在の位置を取得する
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const { latitude, longitude } = position.coords;
+
+                    // 位置情報を含むリクエストを送信
+                    const response = await fetch(apiEndpoint + "/route", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            origin: {
+                                latitude: latitude,
+                                longitude: longitude,
+                            },
+                            destination: {
+                                latitude: latitude,
+                                longitude: longitude,
+                            },
+                        }),
+                    });
+
+                    const data = await response.json();
+                    const decodedRoute = polyline.decode(data.polyline_points);
+                    console.log("Decoded Route:", decodedRoute);
+                    setRoute(decodedRoute);
+                });
             } catch (error) {
                 console.error("Error fetching route:", error);
             }
@@ -155,19 +177,9 @@ const Map: React.FC = () => {
                 />
                 {position && (
                     <>
-                        <Marker
-                            position={position}
-                            icon={L.icon({
-                                iconUrl: "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
-                                shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-shadow.png",
-                                iconSize: [25, 41],
-                                iconAnchor: [12, 41],
-                                popupAnchor: [1, -34],
-                                shadowSize: [41, 41],
-                            })}
-                        >
+                        <CircleMarker center={position} pathOptions={{ fillColor: "blue" }} radius={10}>
                             <Popup>Me</Popup>
-                        </Marker>
+                        </CircleMarker>
                     </>
                 )}
 
@@ -192,6 +204,8 @@ const Map: React.FC = () => {
                 {route.length > 0 && <Polyline positions={route} color="blue" />}
 
                 <MapClickHandler setClickedPosition={setClickedPosition} addRequest={addRequest} />
+
+                {position && <MapComponent position={position} />}
             </MapContainer>
 
             {/* 右下にボタンを配置 */}

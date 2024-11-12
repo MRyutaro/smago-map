@@ -40,6 +40,16 @@ class Status(str, Enum):
     removed = "removed"
 
 
+class Location(BaseModel):
+    latitude: float
+    longitude: float
+
+
+class RouteRequest(BaseModel):
+    origin: Location
+    destination: Location
+
+
 # ダミーデータ
 TRASHCANS = [
     {"id": 1, "latitude": 35.7137757, "longitude": 139.7969451, "location_description": "近くの公園に設置してあります", "status": Status.full},
@@ -90,8 +100,8 @@ async def create_request(request: Request):
     return {"request": new_request}
 
 
-@app.get("/api/route")
-async def get_shortest_route():
+@app.post("/api/route")
+async def get_shortest_route(route_request: RouteRequest):
     # # full状態のゴミ箱のみを抽出
     # full_trashcans = [trashcan for trashcan in TRASHCANS if trashcan["status"] == Status.full]
 
@@ -102,8 +112,10 @@ async def get_shortest_route():
     # waypoints = "|".join([f'{t["latitude"]},{t["longitude"]}' for t in full_trashcans])
 
     # # 最初と最後のゴミ箱位置（例：1番目と最後のゴミ箱位置に設定）
-    # origin = f'{full_trashcans[0]["latitude"]},{full_trashcans[0]["longitude"]}'
-    # destination = f'{full_trashcans[-1]["latitude"]},{full_trashcans[-1]["longitude"]}'
+    # origin = f'{route_request.origin.latitude},{route_request.origin.longitude}'
+    # destination = f'{route_request.destination.latitude},{route_request.destination.longitude}'
+    # origin = '35.72285883534467,139.80149745941165'
+    # destination = '35.72285883534467,139.80149745941165'
 
     # # Google Maps Directions APIエンドポイント
     # url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&waypoints={waypoints}&key={GOOGLE_MAPS_API_KEY}"
@@ -113,8 +125,12 @@ async def get_shortest_route():
     #     raise HTTPException(status_code=response.status_code, detail="Error fetching route from Google API")
 
     # route_data = response.json()
+
+    # ファイルから読み込む場合
     with open(ROUTE_PATH, "r", encoding="utf-8") as f:
         route_data = json.load(f)
+
+    # print(route_data)
 
     polyline_points = route_data["routes"][0]["overview_polyline"]["points"]
     return {"polyline_points": polyline_points}
