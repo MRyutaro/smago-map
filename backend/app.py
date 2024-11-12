@@ -68,6 +68,9 @@ TRASHCANS = [
     {"id": 13, "latitude": 35.682746925563386, "longitude": 139.76675748825076, "location_description": "", "status": Status.not_full},
     {"id": 14, "latitude": 35.68107370561057, "longitude": 139.76450443267825, "location_description": "", "status": Status.not_full},
     {"id": 15, "latitude": 35.682136901519925, "longitude": 139.7646760940552, "location_description": "", "status": Status.not_full},
+    {"id": 16, "latitude": 35.69341287787123, "longitude": 139.7714996337891, "location_description": "", "status": Status.full},
+    {"id": 17, "latitude": 35.68692982193015, "longitude": 139.76909637451175, "location_description": "", "status": Status.full},
+    {"id": 18, "latitude": 35.69250667592556, "longitude": 139.75948333740237, "location_description": "", "status": Status.full},
 ]
 
 REQUESTS = [

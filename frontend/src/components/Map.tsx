@@ -183,11 +183,10 @@ const Map: React.FC = () => {
                 />
                 {position && (
                     <>
-                        <CircleMarker center={position} pathOptions={{ color: "white" }} radius={10}></CircleMarker>
-                        <CircleMarker center={position} pathOptions={{ fillColor: "blue", fillOpacity: 1 }} radius={10}></CircleMarker>
+                        <CircleMarker center={position} pathOptions={{ color: "white" }} radius={10} />
+                        <CircleMarker center={position} pathOptions={{ fillColor: "blue", fillOpacity: 1 }} radius={10} />
                     </>
                 )}
-
                 {/* ゴミ箱の位置にマーカーを配置 */}
                 {trashcans
                     .filter((trashcan) => trashcan.status !== "removed") // Optionally filter out removed
@@ -198,7 +197,6 @@ const Map: React.FC = () => {
                             </Popup>
                         </Marker>
                     ))}
-
                 {/* リクエストの位置に点を配置 */}
                 {requests.map((request) => (
                     <Circle key={request.id} center={[request.latitude, request.longitude]} radius={1} color="red">
@@ -207,6 +205,29 @@ const Map: React.FC = () => {
                 ))}
 
                 {route.length > 0 && <Polyline positions={route} color="blue" />}
+                {position && routeRadius > 0 && (
+                    <>
+                        {/* 半径 */}
+                        <Circle
+                            // center={position}
+                            center={[35.72285883534467, 139.80149745941165]}
+                            radius={routeRadius}
+                        />
+                        {/* 中心 */}
+                        <CircleMarker
+                            // center={position}
+                            center={[35.72285883534467, 139.80149745941165]}
+                            pathOptions={{ color: "white" }}
+                            radius={10}
+                        />
+                        <CircleMarker
+                            // center={position}
+                            center={[35.72285883534467, 139.80149745941165]}
+                            pathOptions={{ fillColor: "blue", fillOpacity: 1 }}
+                            radius={10}
+                        />
+                    </>
+                )}
 
                 <MapClickHandler setClickedPosition={setClickedPosition} addRequest={addRequest} />
 
