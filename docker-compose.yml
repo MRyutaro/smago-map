@@ -26,6 +26,7 @@ services:
       - .env
     environment:
       TZ: "Asia/Tokyo"
+      IS_DOCKER: 1
     ports:
       - "${BACKEND_PORT}:8000"
     volumes:

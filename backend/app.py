@@ -10,6 +10,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from geopy.distance import geodesic
 from pydantic import BaseModel
 
+from database import test_connection
+
+
 dotenv.load_dotenv()
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 ROUTE_PATH = "./sample_route.json"
@@ -84,8 +87,14 @@ REQUEST_INTERVAL = 60  # min
 
 
 @app.get("/api")
-async def read_root():
-    return {"Hello": "World"}
+async def hello_api():
+    return {"message": "Hello, API!"}
+
+
+@app.get("/api/database")
+async def hello_database():
+    db_name = test_connection()
+    return {"message": f"Hello, {db_name} database!"}
 
 
 @app.get("/api/trashcans")
