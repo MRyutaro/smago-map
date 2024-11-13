@@ -19,9 +19,7 @@ if IS_DOCKER == "1":
         f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:5432/{POSTGRES_DB}"
     )
 else:
-    DB_NAME = "smago-map"
-    # sqlite
-    ENGINE = create_engine(f"sqlite:///{DB_NAME}.sqlite3")
+    ENGINE = create_engine("sqlite:///smago-map.sqlite3")
 
 
 # ENGINEに接続できるか確認
