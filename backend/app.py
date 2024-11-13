@@ -15,7 +15,9 @@ from database import test_connection
 
 dotenv.load_dotenv()
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
-ROUTE_PATH = "./sample_route.json"
+ROUTE_JSON_PATH = "./dummy_data/sample_route.json"
+TRASHCANS_JSON_PATH = "./dummy_data/trashcans.json"
+TRASHCANS_REQUESTS_JSON_PATH = "./dummy_data/trashcan_requests.json"
 
 app = FastAPI()
 
@@ -37,13 +39,6 @@ class TrashcanRequest(BaseModel):
     longitude: float
 
 
-# statusのenumを定義
-class Status(str, Enum):
-    full = "full"
-    not_full = "not_full"
-    removed = "removed"
-
-
 class Location(BaseModel):
     latitude: float
     longitude: float
@@ -55,31 +50,11 @@ class RouteRequest(BaseModel):
 
 
 # ダミーデータ
-TRASHCANS = [
-    {"id": 1, "latitude": 35.7137757, "longitude": 139.7969451, "location_description": "近くの公園に設置してあります", "status": Status.full},
-    {"id": 2, "latitude": 35.7143071, "longitude": 139.7963245, "location_description": "近くの交差点に設置してあります", "status": Status.not_full},
-    {"id": 3, "latitude": 35.7144253, "longitude": 139.7953445, "location_description": "近くの駅に設置してあります", "status": Status.removed},
-    {"id": 4, "latitude": 35.714748, "longitude": 139.7952627, "location_description": "近くの商店街に設置してあります", "status": Status.full},
-    {"id": 5, "latitude": 35.7111474, "longitude": 139.7965377, "location_description": "近くの学校に設置してあります", "status": Status.full},
-    {"id": 6, "latitude": 35.7119654, "longitude": 139.7963265, "location_description": "近くの図書館に設置してあります", "status": Status.removed},
-    {"id": 7, "latitude": 35.7124165, "longitude": 139.7963355, "location_description": "近くの公民館に設置してあります", "status": Status.full},
-    {"id": 8, "latitude": 35.7128409, "longitude": 139.7963711, "location_description": "近くの病院に設置してあります", "status": Status.not_full},
-    {"id": 9, "latitude": 35.7128488, "longitude": 139.7960204, "location_description": "近くのスーパーに設置してあります", "status": Status.full},
-    {"id": 10, "latitude": 35.7112601, "longitude": 139.7963721, "location_description": "近くのコンビニに設置してあります", "status": Status.full},
-    {"id": 11, "latitude": 35.680916839441025, "longitude": 139.76553440093997, "location_description": "", "status": Status.full},
-    {"id": 12, "latitude": 35.681962608079424, "longitude": 139.7661137580872, "location_description": "", "status": Status.not_full},
-    {"id": 13, "latitude": 35.682746925563386, "longitude": 139.76675748825076, "location_description": "", "status": Status.not_full},
-    {"id": 14, "latitude": 35.68107370561057, "longitude": 139.76450443267825, "location_description": "", "status": Status.not_full},
-    {"id": 15, "latitude": 35.682136901519925, "longitude": 139.7646760940552, "location_description": "", "status": Status.not_full},
-    {"id": 16, "latitude": 35.69341287787123, "longitude": 139.7714996337891, "location_description": "", "status": Status.full},
-    {"id": 17, "latitude": 35.68692982193015, "longitude": 139.76909637451175, "location_description": "", "status": Status.full},
-    {"id": 18, "latitude": 35.69250667592556, "longitude": 139.75948333740237, "location_description": "", "status": Status.full},
-]
+with open(TRASHCANS_JSON_PATH, "r", encoding="utf-8") as f:
+    TRASHCANS = json.load(f)
 
-TRASHCANS_REQUESTS = [
-    {"id": 1, "latitude": 35.71279354903134, "longitude": 139.79717373847964, "created_at": "2024-11-11T12:00:00.910987", "host": ""},
-    {"id": 2, "latitude": 35.7132465360125, "longitude": 139.79656219482425, "created_at": "2024-11-11T12:30:00.627615", "host": ""},
-]
+with open(TRASHCANS_REQUESTS_JSON_PATH, "r", encoding="utf-8") as f:
+    TRASHCANS_REQUESTS = json.load(f)
 
 R = 5000  # m
 
@@ -100,7 +75,7 @@ async def hello_database():
 @app.get("/api/trashcans")
 async def get_trashcans():
     # removed以外のゴミ箱のみを返す
-    active_trashcans = [trashcan for trashcan in TRASHCANS if trashcan["status"] != Status.removed]
+    active_trashcans = [trashcan for trashcan in TRASHCANS if trashcan["status"] != "removed"]
     return {"trashcans": active_trashcans}
 
 
@@ -163,7 +138,7 @@ async def get_shortest_route(route_request: RouteRequest):
     # route_data = response.json()
 
     # ファイルから読み込む場合
-    with open(ROUTE_PATH, "r", encoding="utf-8") as f:
+    with open(ROUTE_JSON_PATH, "r", encoding="utf-8") as f:
         route_data = json.load(f)
 
     # print(route_data)
