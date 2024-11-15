@@ -40,10 +40,17 @@ const styles = {
 
 const MenuComponent = () => {
     return (
-        <Menu width={300} styles={styles}>
-            <div>
-                <style>
-                    {`
+        <div
+            style={{
+                position: "absolute",
+                top: "0px",
+                left: "0px",
+            }}
+        >
+            <Menu width={300} styles={styles}>
+                <div>
+                    <style>
+                        {`
                     .menu-item {
                         color: #000 !important;
                         transition: .3s all;
@@ -53,43 +60,44 @@ const MenuComponent = () => {
                         color: #ffb907 !important;
                     }
                     `}
-                </style>
-            </div>
-            <Link to="/" className="menu-item">
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                        margin: "30px 0",
-                    }}
-                >
-                    <GroupsIcon /> For Tourist
+                    </style>
                 </div>
-            </Link>
-            <Link to="/requests" className="menu-item">
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                    }}
-                >
-                    <BusinessIcon /> For Local Government
-                </div>
-            </Link>
-            <Link to="/route" className="menu-item">
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                    }}
-                >
-                    <LocalShippingIcon /> For Garbase Collector
-                </div>
-            </Link>
-        </Menu>
+                <Link to="/" className="menu-item">
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            margin: "30px 0",
+                        }}
+                    >
+                        <GroupsIcon /> For Tourist
+                    </div>
+                </Link>
+                <Link to="/requests" className="menu-item">
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                        }}
+                    >
+                        <BusinessIcon /> For Local Government
+                    </div>
+                </Link>
+                <Link to="/route" className="menu-item">
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                        }}
+                    >
+                        <LocalShippingIcon /> For Garbase Collector
+                    </div>
+                </Link>
+            </Menu>
+        </div>
     );
 };
 
