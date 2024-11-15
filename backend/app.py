@@ -5,13 +5,11 @@ from enum import Enum
 
 import dotenv
 import requests
-from authlib.integrations.starlette_client import OAuth
 from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.responses import JSONResponse
 from geopy.distance import geodesic
 from pydantic import BaseModel
-from starlette.middleware.sessions import SessionMiddleware
 
 from database import test_connection
 
@@ -20,20 +18,10 @@ GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 ROUTE_JSON_PATH = "./dummy_data/sample_route.json"
 TRASHCANS_JSON_PATH = "./dummy_data/trashcans.json"
 TRASHCANS_REQUESTS_JSON_PATH = "./dummy_data/trashcan_requests.json"
-GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
-GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI")
-SESSION_SECRET_KEY = os.getenv("SESSION_SECRET")
-
-# 上の4つのいずれかがNoneの場合はエラー
-if None in [GOOGLE_MAPS_API_KEY, ROUTE_JSON_PATH, TRASHCANS_JSON_PATH, TRASHCANS_REQUESTS_JSON_PATH]:
-    raise ValueError("Please set the environment variables")
 
 
 app = FastAPI()
 
-# セッションミドルウェアを追加
-app.add_middleware(SessionMiddleware, secret_key="your_session_secret_key")
 
 origins = [
     "*",
@@ -45,16 +33,6 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-)
-
-
-oauth = OAuth()
-oauth.register(
-    name="google",
-    client_id=GOOGLE_CLIENT_ID,
-    client_secret=GOOGLE_CLIENT_SECRET,
-    server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
-    client_kwargs={"scope": "openid email profile"},
 )
 
 
@@ -100,26 +78,6 @@ async def hello_database():
         return JSONResponse(content={"message": f"Hello, {db_name} database!"})
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=400)
-
-
-# Google OAuth認証エンドポイント
-@app.get("/auth/login")
-async def login_via_google(request: Request):
-    try:
-        redirect_uri = GOOGLE_REDIRECT_URI
-        return await oauth.google.authorize_redirect(request, redirect_uri)
-    except Exception as e:
-        return JSONResponse({"error": str(e)}, status_code=400)
-
-
-@app.get("/auth/callback")
-async def auth_callback(request: Request):
-    try:
-        token = await oauth.google.authorize_access_token(request)
-        user_info = token.get("userinfo")
-        return JSONResponse({"message": "Authentication successful", "user": user_info})
-    except Exception as e:
-        return JSONResponse({"error": str(e)}, status_code=400)
 
 
 @app.get("/api/trashcans")
