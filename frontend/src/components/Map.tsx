@@ -6,8 +6,8 @@ import L from "leaflet";
 import { LatLngExpression } from "leaflet";
 import polyline from "@mapbox/polyline";
 
-const apiEndpoint = "http://localhost:8000/api";
-// const apiEndpoint = "http://localhost:58888/api";
+// const apiEndpoint = "http://localhost:8000/api";
+const apiEndpoint = "http://localhost:58888/api";
 // const apiEndpoint = "http://smagomap-api.mryutaro.site/api";
 const zoomLevel = 20;
 
@@ -112,6 +112,7 @@ const Map: React.FC = () => {
                 // 現在の位置を取得する
                 navigator.geolocation.getCurrentPosition(async (position) => {
                     const { latitude, longitude } = position.coords;
+                    console.log("Current Position:", latitude, longitude);
 
                     // 位置情報を含むリクエストを送信
                     const response = await fetch(apiEndpoint + "/route", {
