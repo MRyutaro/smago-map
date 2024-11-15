@@ -83,10 +83,14 @@ const Map: React.FC = () => {
         });
     };
 
+    if (!position) {
+        return <div>Loading...</div>; // 位置情報が取得できるまで表示
+    }
+
     return (
         <>
             <MapContainer
-                center={position || [35.7137757, 139.7969451]}
+                center={position}
                 zoom={zoomLevel}
                 style={{ height: "100vh", width: "100vw" }}
                 zoomControl={false} // ズームコントロールを非表示に設定
@@ -95,19 +99,17 @@ const Map: React.FC = () => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {position && (
-                    <>
-                        <CircleMarker center={position} pathOptions={{ color: "white" }} radius={10} />
-                        <CircleMarker center={position} pathOptions={{ fillColor: "blue", fillOpacity: 1 }} radius={10} />
-                    </>
-                )}
+                <CircleMarker center={position} pathOptions={{ color: "white" }} radius={10} />
+                <CircleMarker center={position} pathOptions={{ fillColor: "blue", fillOpacity: 1 }} radius={10} />
                 {/* ゴミ箱の位置にマーカーを配置 */}
                 {trashcans
                     .filter((trashcan) => trashcan.status !== "removed") // Optionally filter out removed
                     .map((trashcan) => (
                         <Marker key={trashcan.id} position={[trashcan.latitude, trashcan.longitude]} icon={getMarkerIcon(trashcan.status)}>
                             <Popup>
-                                id: {trashcan.id} <br /> status: {trashcan.status}
+                                <>
+                                    id: {trashcan.id} <br /> status: {trashcan.status}
+                                </>
                             </Popup>
                         </Marker>
                     ))}
@@ -118,7 +120,7 @@ const Map: React.FC = () => {
                     </Circle>
                 ))}
 
-                {position && <MapComponent position={position} />}
+                <MapComponent position={position} />
             </MapContainer>
 
             {/* 右下にボタンを配置 */}
@@ -139,8 +141,7 @@ const Map: React.FC = () => {
                 }}
                 onClick={() => {
                     if (!position) {
-                        // alert("Location not found");
-                        alert("Request sent successfully");
+                        alert("Location not found");
                         return;
                     }
                     // ゴミ箱追加リクエストを送信
