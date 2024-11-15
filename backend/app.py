@@ -22,7 +22,7 @@ ROUTE_REQUESTS_HISTORY_JSON_PATH = "./dummy_data/route_requests_history.json"
 R = 5000  # m
 REQUEST_INTERVAL = 60  # min
 # 1週間で10回までリクエスト可能
-ROUTE_REQUEST_LIMIT = 10
+ROUTE_REQUEST_LIMIT = 100
 ROUTE_REQUEST_INTERVAL = 7 * 24 * 60  # min
 
 
@@ -117,7 +117,7 @@ async def create_request(trashcan_request: TrashcanRequest, request: Request):
             if req["host"] == request_ip:
                 created_at = datetime.fromisoformat(req["created_at"])
                 if (datetime.now() - created_at).total_seconds() < REQUEST_INTERVAL * 60:
-                    raise HTTPException(status_code=429, detail="Too many requests")
+                    return JSONResponse(content={"error": "Too many requests", "interval": REQUEST_INTERVAL}, status_code=429)
 
         new_request = {
             "id": new_id,
@@ -145,7 +145,7 @@ async def get_shortest_route(route_request: RouteRequest, request: Request):
             if req["ip_address"] == request_ip and (now - datetime.fromisoformat(req["reqested_at"])).total_seconds() <= ROUTE_REQUEST_INTERVAL * 60
         ]
         if len(recent_requests) >= ROUTE_REQUEST_LIMIT:
-            raise HTTPException(status_code=429, detail="Too many requests")
+            return JSONResponse(content={"error": "Too many requests"}, status_code=429)
 
         # # 最初と最後のゴミ箱位置（例：1番目と最後のゴミ箱位置に設定）
         # origin = f'{route_request.origin.latitude},{route_request.origin.longitude}'
@@ -160,7 +160,7 @@ async def get_shortest_route(route_request: RouteRequest, request: Request):
         # ]
 
         # if not filtered_trashcans:
-        #     raise HTTPException(status_code=404, detail="Full trashcans not found")
+        #     return JSONResponse(content={"error": "Full trashcans not found"}, status_code=404)
 
         # # ゴミ箱の位置をWaypointsとして構築
         # waypoints = "|".join([f'{t["latitude"]},{t["longitude"]}' for t in filtered_trashcans])
@@ -171,7 +171,7 @@ async def get_shortest_route(route_request: RouteRequest, request: Request):
 
         # response = requests.get(url)
         # if response.status_code != 200:
-        #     raise HTTPException(status_code=response.status_code, detail="Error fetching route from Google API")
+        #     return JSONResponse(content={"error": "Error fetching route from Google API"}, status_code=400)
 
         # route_data = response.json()
 
@@ -189,7 +189,6 @@ async def get_shortest_route(route_request: RouteRequest, request: Request):
             "ip_address": request_ip,
             "reqested_at": now.isoformat()
         })
-        print(ROUTE_REQUESTS_HISTORY)
 
         return JSONResponse(content={"radius": R, "polyline_points": polyline_points})
 
