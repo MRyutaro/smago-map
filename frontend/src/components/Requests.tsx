@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, Polyline, useMap, CircleMarker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, useMap, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import DeleteIcon from "@mui/icons-material/Delete";
 import L from "leaflet";
 import { LatLngExpression } from "leaflet";
-import polyline from "@mapbox/polyline";
 
 import Menu from "./Menu";
 
@@ -69,8 +67,6 @@ const Map: React.FC = () => {
     const [trashcans, setTrashcans] = useState<Array<{ id: number; latitude: number; longitude: number; status: string }>>([]);
     const [requests, setRequests] = useState<Array<{ id: number; latitude: number; longitude: number }>>([]);
     const [_, setClickedPosition] = useState<LatLngExpression | null>(null);
-    const [route, setRoute] = useState<[number, number][]>([]);
-    const [routeRadius, setRouteRadius] = useState<number>(0);
 
     useEffect(() => {
         // FastAPIのエンドポイントからゴミ箱の位置を取得
@@ -107,49 +103,6 @@ const Map: React.FC = () => {
             { id: prevRequests.length + 1, latitude: (pos as [number, number])[0], longitude: (pos as [number, number])[1] },
         ]);
     };
-
-    useEffect(() => {
-        const fetchRoute = async () => {
-            try {
-                // 現在の位置を取得する
-                navigator.geolocation.getCurrentPosition(async (position) => {
-                    const { latitude, longitude } = position.coords;
-                    console.log("Current Position:", latitude, longitude);
-
-                    // 位置情報を含むリクエストを送信
-                    const response = await fetch(apiEndpoint + "/route", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            origin: {
-                                // latitude: latitude,
-                                // longitude: longitude,
-                                latitude: 35.72285883534467,
-                                longitude: 139.80149745941165,
-                            },
-                            destination: {
-                                // latitude: latitude,
-                                // longitude: longitude,
-                                latitude: 35.72285883534467,
-                                longitude: 139.80149745941165,
-                            },
-                        }),
-                    });
-
-                    const data = await response.json();
-                    const decodedRoute = polyline.decode(data.polyline_points);
-                    console.log("Decoded Route:", decodedRoute);
-                    setRouteRadius(data.radius);
-                    setRoute(decodedRoute);
-                });
-            } catch (error) {
-                console.error("Error fetching route:", error);
-            }
-        };
-        fetchRoute();
-    }, []);
 
     const getMarkerIcon = (status: string) => {
         let iconUrl;
@@ -207,60 +160,10 @@ const Map: React.FC = () => {
                     </Circle>
                 ))}
 
-                {route.length > 0 && <Polyline positions={route} color="blue" />}
-                {position && routeRadius > 0 && (
-                    <>
-                        {/* 半径 */}
-                        <Circle
-                            // center={position}
-                            center={[35.72285883534467, 139.80149745941165]}
-                            radius={routeRadius}
-                        />
-                        {/* 中心 */}
-                        <CircleMarker
-                            // center={position}
-                            center={[35.72285883534467, 139.80149745941165]}
-                            pathOptions={{ color: "white" }}
-                            radius={10}
-                        />
-                        <CircleMarker
-                            // center={position}
-                            center={[35.72285883534467, 139.80149745941165]}
-                            pathOptions={{ fillColor: "blue", fillOpacity: 1 }}
-                            radius={10}
-                        />
-                    </>
-                )}
-
                 <MapClickHandler setClickedPosition={setClickedPosition} addRequest={addRequest} />
 
                 {position && <MapComponent position={position} />}
             </MapContainer>
-
-            {/* 右下にボタンを配置 */}
-            <button
-                style={{
-                    position: "absolute",
-                    bottom: "20px",
-                    right: "20px",
-                    backgroundColor: "#3a5bf0",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "12px",
-                    zIndex: 1000,
-                }}
-                onClick={() => {}}
-            >
-                <DeleteIcon
-                    sx={{
-                        fontSize: 32,
-                    }}
-                />
-            </button>
 
             <Menu />
         </>
