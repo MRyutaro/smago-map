@@ -166,7 +166,7 @@ async def get_shortest_route(route_request: RouteRequest, request: Request):
         waypoints = "|".join([f'{t["latitude"]},{t["longitude"]}' for t in filtered_trashcans])
 
         # Google Maps Directions APIエンドポイント
-        mode = "walking"  # "driving", "walking", "bicycling", "transit"
+        mode = "driving"  # "driving", "walking", "bicycling", "transit"
         url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&waypoints={waypoints}&key={GOOGLE_MAPS_API_KEY}&mode={mode}"
 
         response = requests.get(url)
