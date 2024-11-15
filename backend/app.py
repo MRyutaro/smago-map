@@ -18,6 +18,12 @@ GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 ROUTE_JSON_PATH = "./dummy_data/sample_route.json"
 TRASHCANS_JSON_PATH = "./dummy_data/trashcans.json"
 TRASHCANS_REQUESTS_JSON_PATH = "./dummy_data/trashcan_requests.json"
+ROUTE_REQUESTS_HISTORY_JSON_PATH = "./dummy_data/route_requests_history.json"
+R = 5000  # m
+REQUEST_INTERVAL = 60  # min
+# 1週間で10回までリクエスト可能
+ROUTE_REQUEST_LIMIT = 10
+ROUTE_REQUEST_INTERVAL = 7 * 24 * 60  # min
 
 
 app = FastAPI()
@@ -52,15 +58,17 @@ class RouteRequest(BaseModel):
 
 
 # ダミーデータ
-with open(TRASHCANS_JSON_PATH, "r", encoding="utf-8") as f:
-    TRASHCANS = json.load(f)
+try:
+    with open(TRASHCANS_JSON_PATH, "r", encoding="utf-8") as f:
+        TRASHCANS = json.load(f)
 
-with open(TRASHCANS_REQUESTS_JSON_PATH, "r", encoding="utf-8") as f:
-    TRASHCANS_REQUESTS = json.load(f)
+    with open(TRASHCANS_REQUESTS_JSON_PATH, "r", encoding="utf-8") as f:
+        TRASHCANS_REQUESTS = json.load(f)
 
-R = 5000  # m
-
-REQUEST_INTERVAL = 60  # min
+    with open(ROUTE_REQUESTS_HISTORY_JSON_PATH, "r", encoding="utf-8") as f:
+        ROUTE_REQUESTS_HISTORY = json.load(f)
+except Exception as e:
+    raise Exception(f"Error loading dummy data: {str(e)}")
 
 
 @app.get("/api")
@@ -125,8 +133,20 @@ async def create_request(trashcan_request: TrashcanRequest, request: Request):
 
 
 @app.post("/api/route")
-async def get_shortest_route(route_request: RouteRequest):
+async def get_shortest_route(route_request: RouteRequest, request: Request):
     try:
+        # リクエスト元のIPアドレスを取得
+        request_ip = request.client.host
+
+        # IPアドレスごとにROUTE_REQUEST_INTERVAL以内にリクエストがあるかチェック
+        now = datetime.now()
+        recent_requests = [
+            req for req in ROUTE_REQUESTS_HISTORY
+            if req["ip_address"] == request_ip and (now - datetime.fromisoformat(req["reqested_at"])).total_seconds() <= ROUTE_REQUEST_INTERVAL * 60
+        ]
+        if len(recent_requests) >= ROUTE_REQUEST_LIMIT:
+            raise HTTPException(status_code=429, detail="Too many requests")
+
         # # 最初と最後のゴミ箱位置（例：1番目と最後のゴミ箱位置に設定）
         # origin = f'{route_request.origin.latitude},{route_request.origin.longitude}'
         # destination = f'{route_request.destination.latitude},{route_request.destination.longitude}'
@@ -163,10 +183,18 @@ async def get_shortest_route(route_request: RouteRequest):
 
         polyline_points = route_data["routes"][0]["overview_polyline"]["points"]
 
+        # リクエスト履歴に追加
+        ROUTE_REQUESTS_HISTORY.append({
+            "id": len(ROUTE_REQUESTS_HISTORY) + 1,
+            "ip_address": request_ip,
+            "reqested_at": now.isoformat()
+        })
+        print(ROUTE_REQUESTS_HISTORY)
+
         return JSONResponse(content={"radius": R, "polyline_points": polyline_points})
 
     except Exception as e:
-        return JSONResponse(content={"error": str(e)}, status_code=400)    
+        return JSONResponse(content={"error": str(e)}, status_code=400)
 
 
 if __name__ == "__main__":
