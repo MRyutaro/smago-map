@@ -188,7 +188,6 @@ const Map: React.FC = () => {
                         <Popup>request {request.id}</Popup>
                     </Circle>
                 ))}
-                
             </MapContainer>
 
             {/* 右下にボタンを配置 */}
