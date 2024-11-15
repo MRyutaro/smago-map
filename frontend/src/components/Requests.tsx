@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, useMap, CircleMarker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Circle, useMap, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { LatLngExpression } from "leaflet";
 
 import Menu from "./Menu";
 
-const apiEndpoint = "http://localhost:8000/api";
+// const apiEndpoint = "http://localhost:8000/api";
+// const apiEndpoint = "http://192.168.0.15:8000/api";
 // const apiEndpoint = "http://localhost:58888/api";
-// const apiEndpoint = "http://smagomap-api.mryutaro.site/api";
+const apiEndpoint = "http://smagomap-api.mryutaro.site/api";
 const zoomLevel = 20;
 
 interface MapComponentProps {
@@ -27,46 +28,10 @@ const MapComponent: React.FC<MapComponentProps> = ({ position }) => {
     return null;
 };
 
-const MapClickHandler: React.FC<{ setClickedPosition: (pos: LatLngExpression) => void; addRequest: (pos: LatLngExpression) => void }> = ({
-    setClickedPosition,
-    addRequest,
-}) => {
-    useMapEvents({
-        click: (e) => {
-            const clickedPosition = [e.latlng.lat, e.latlng.lng] as LatLngExpression;
-            setClickedPosition(clickedPosition);
-            console.log("Clicked Position:", e.latlng);
-
-            // POSTリクエストをAPIに送信
-            fetch(`${apiEndpoint}/requests`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    latitude: e.latlng.lat,
-                    longitude: e.latlng.lng,
-                }),
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        console.log("Request sent successfully");
-                        addRequest(clickedPosition);
-                    } else {
-                        console.error("Failed to send request");
-                    }
-                })
-                .catch((error) => console.error("Error sending request:", error));
-        },
-    });
-    return null;
-};
-
 const Map: React.FC = () => {
     const [position, setPosition] = useState<LatLngExpression | null>(null);
     const [trashcans, setTrashcans] = useState<Array<{ id: number; latitude: number; longitude: number; status: string }>>([]);
     const [requests, setRequests] = useState<Array<{ id: number; latitude: number; longitude: number }>>([]);
-    const [_, setClickedPosition] = useState<LatLngExpression | null>(null);
 
     useEffect(() => {
         // FastAPIのエンドポイントからゴミ箱の位置を取得
@@ -96,13 +61,6 @@ const Map: React.FC = () => {
             }
         );
     }, []);
-
-    const addRequest = (pos: LatLngExpression) => {
-        setRequests((prevRequests) => [
-            ...prevRequests,
-            { id: prevRequests.length + 1, latitude: (pos as [number, number])[0], longitude: (pos as [number, number])[1] },
-        ]);
-    };
 
     const getMarkerIcon = (status: string) => {
         let iconUrl;
@@ -159,8 +117,6 @@ const Map: React.FC = () => {
                         <Popup>request {request.id}</Popup>
                     </Circle>
                 ))}
-
-                <MapClickHandler setClickedPosition={setClickedPosition} addRequest={addRequest} />
 
                 {position && <MapComponent position={position} />}
             </MapContainer>
