@@ -5,11 +5,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import L from "leaflet";
 import { LatLngExpression } from "leaflet";
 import polyline from "@mapbox/polyline";
-{
-    /*ハンバーガーメニュー */
-}
+{/*ハンバーガーメニュー */}
 import Menu from "./Menu";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const apiEndpoint = "http://localhost:8000/api";
 const zoomLevel = 20;
@@ -183,6 +181,11 @@ const Map: React.FC = () => {
                             </Popup>
                         </Marker>
                     ))}
+
+                {/* ルートの表示 */}
+                {route.length > 0 && <Polyline positions={route} color="blue" />}
+                <MapClickHandler setClickedPosition={setClickedPosition} addRequest={addRequest} />
+                
             </MapContainer>
 
             {/* 右下にボタンを配置 */}
@@ -209,24 +212,18 @@ const Map: React.FC = () => {
                     }}
                 />
             </button>
-
+            
             {/*ハンバーガーメニュー*/}
-            <div
-                style={{
-                    position: "absolute",
-                    top: "0px",
-                    left: "0px",
-                    backgroundColor: "#3a5bf0",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                    alignItems: "center",
-                    zIndex: 1000,
-                }}
-            >
-                <Menu />
-                <MenuIcon style={{ width: "30px", height: "30px", padding: "5px 10px 1px" }} />
+            <div style={{position: "absolute",top: "0px",left: "0px", 
+                backgroundColor: "#3a5bf0",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                alignItems: "center",
+                zIndex: 1000,}}>
+                <Menu/>
+                <MenuIcon style={{width: "30px", height: "30px", padding: "5px 10px 1px"}}/>
             </div>
         </>
     );

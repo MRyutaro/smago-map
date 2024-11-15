@@ -1,18 +1,23 @@
-import Map from "./components/Map";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import Customer from "./components/Map";
+import Delivery from "./components/Route";
+import Shop from "./components/Requests";
+
 
 function App() {
     return (
+      <div>
+        <BrowserRouter>
         <div className="App">
-            <div
-              style={{
-                // 横方向に中央揃え
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-                <Map />
-            </div>
+          <Routes>
+            <Route path="/" element={<Customer />} />
+            <Route path="/route" element={<Delivery />} />
+            <Route path="/requests" element={<Shop />} />
+          </Routes>
         </div>
+      </BrowserRouter>
+      </div>
     );
 }
 
