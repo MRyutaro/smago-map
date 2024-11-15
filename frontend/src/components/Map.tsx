@@ -10,7 +10,7 @@ import Menu from "./Menu";
 // const apiEndpoint = "http://localhost:8000/api";
 // const apiEndpoint = "http://192.168.0.15:8000/api";
 // const apiEndpoint = "http://localhost:58888/api";
-const apiEndpoint = "http://smagomap-api.mryutaro.site/api";
+const apiEndpoint = "https://smagomap-api.mryutaro.site/api";
 const zoomLevel = 20;
 
 interface MapComponentProps {
