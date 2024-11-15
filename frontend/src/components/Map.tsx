@@ -6,8 +6,8 @@ import L from "leaflet";
 import { LatLngExpression } from "leaflet";
 import polyline from "@mapbox/polyline";
 
-// const apiEndpoint = "http://localhost:8000/api";
-const apiEndpoint = "http://localhost:58888/api";
+const apiEndpoint = "http://localhost:8000/api";
+// const apiEndpoint = "http://localhost:58888/api";
 // const apiEndpoint = "http://smagomap-api.mryutaro.site/api";
 const zoomLevel = 20;
 
