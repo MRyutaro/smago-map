@@ -147,37 +147,37 @@ async def get_shortest_route(route_request: RouteRequest, request: Request):
         if len(recent_requests) >= ROUTE_REQUEST_LIMIT:
             return JSONResponse(content={"error": "Too many requests"}, status_code=429)
 
-        # # 最初と最後のゴミ箱位置（例：1番目と最後のゴミ箱位置に設定）
-        # origin = f'{route_request.origin.latitude},{route_request.origin.longitude}'
-        # destination = f'{route_request.destination.latitude},{route_request.destination.longitude}'
-        # # origin = '35.72285883534467,139.80149745941165'
-        # # destination = '35.72285883534467,139.80149745941165'
+        # 最初と最後のゴミ箱位置（例：1番目と最後のゴミ箱位置に設定）
+        origin = f'{route_request.origin.latitude},{route_request.origin.longitude}'
+        destination = f'{route_request.destination.latitude},{route_request.destination.longitude}'
+        # origin = '35.72285883534467,139.80149745941165'
+        # destination = '35.72285883534467,139.80149745941165'
 
-        # # 半径 R 以内のゴミ箱をフィルタリング
-        # filtered_trashcans = [
-        #     trashcan for trashcan in TRASHCANS
-        #     if geodesic(origin, (trashcan["latitude"], trashcan["longitude"])).meters <= R
-        # ]
+        # 半径 R 以内のゴミ箱をフィルタリング
+        filtered_trashcans = [
+            trashcan for trashcan in TRASHCANS
+            if geodesic(origin, (trashcan["latitude"], trashcan["longitude"])).meters <= R
+        ]
 
-        # if not filtered_trashcans:
-        #     return JSONResponse(content={"error": "Full trashcans not found"}, status_code=404)
+        if not filtered_trashcans:
+            return JSONResponse(content={"error": "Full trashcans not found"}, status_code=404)
 
-        # # ゴミ箱の位置をWaypointsとして構築
-        # waypoints = "|".join([f'{t["latitude"]},{t["longitude"]}' for t in filtered_trashcans])
+        # ゴミ箱の位置をWaypointsとして構築
+        waypoints = "|".join([f'{t["latitude"]},{t["longitude"]}' for t in filtered_trashcans])
 
-        # # Google Maps Directions APIエンドポイント
-        # mode = "walking"  # "driving", "walking", "bicycling", "transit"
-        # url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&waypoints={waypoints}&key={GOOGLE_MAPS_API_KEY}&mode={mode}"
+        # Google Maps Directions APIエンドポイント
+        mode = "walking"  # "driving", "walking", "bicycling", "transit"
+        url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&waypoints={waypoints}&key={GOOGLE_MAPS_API_KEY}&mode={mode}"
 
-        # response = requests.get(url)
-        # if response.status_code != 200:
-        #     return JSONResponse(content={"error": "Error fetching route from Google API"}, status_code=400)
+        response = requests.get(url)
+        if response.status_code != 200:
+            return JSONResponse(content={"error": "Error fetching route from Google API"}, status_code=400)
 
-        # route_data = response.json()
+        route_data = response.json()
 
-        # ファイルから読み込む場合
-        with open(ROUTE_JSON_PATH, "r", encoding="utf-8") as f:
-            route_data = json.load(f)
+        # # ファイルから読み込む場合
+        # with open(ROUTE_JSON_PATH, "r", encoding="utf-8") as f:
+        #     route_data = json.load(f)
 
         # print(route_data)
 
