@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, useMap, CircleMarker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Circle, useMap, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import L from "leaflet";
