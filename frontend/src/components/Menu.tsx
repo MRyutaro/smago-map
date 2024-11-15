@@ -8,82 +8,84 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 const styles = {
     bmBurgerButton: {
         position: "fixed",
+        margin: "8px",
         width: "36px",
         height: "30px",
-        left: "36px",
-        top: "36px",
+        left: "20px",
+        top: "20px",
     },
     bmBurgerBars: {
-        background: "#373a47",
+        background: "#3a5bf0",
     },
     bmBurgerBarsHover: {
         background: "#a90000",
     },
-    bmCrossButton: {
-        height: "24px",
-        width: "24px",
-    },
-    bmCross: {
-        background: "#bdc3c7",
-    },
     bmMenu: {
-        background: "#373a47",
-        padding: "2.5em 1.5em 0",
-        fontSize: "1.15em",
-    },
-    bmMorphShape: {
-        fill: "#373a47",
+        background: "#fff",
+        overflow: "hidden",
     },
     bmItemList: {
-        color: "#b8b7ad",
-        padding: "0.8em",
+        padding: "10px",
     },
     bmItem: {
-        display: "inline-block",
+        color: "#5c5c5c",
+        fontSize: "24px",
+        marginBottom: "30px",
     },
     bmOverlay: {
-        background: "rgba(0, 0, 0, 0.3)",
+        background: "rgba(0, 0, 0, 0.4)",
+        overflow: "hidden",
     },
 };
 
 const MenuComponent = () => {
     return (
         <Menu width={300} styles={styles}>
-            {/* <div>
+            <div>
                 <style>
                     {`
                     .menu-item {
-                        color: #000;
-                        transition: .3s;
+                        color: #000 !important;
+                        transition: .3s all;
                     }
                     .menu-item:hover {
-                        background-position: -100% 0;
-                        color: #ffb907;
-                    }
-                    .bm-item-list {
-                        height: 50%;
-                        padding: 10px 10px;
-                        background-color: #fff;
-                    }
-                    .bm-menu {
-                        overflow: hidden !important;
+                        background-position: -100% 0 !important;
+                        color: #ffb907 !important;
                     }
                     `}
                 </style>
-            </div> */}
+            </div>
             <Link to="/" className="menu-item">
-                {/* 垂直方向に中央ぞろえ */}
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "30px 0", fontSize: "24px" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        margin: "30px 0",
+                    }}
+                >
                     <GroupsIcon /> For Tourist
                 </div>
             </Link>
             <Link to="/requests" className="menu-item">
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "30px 0", fontSize: "24px" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                    }}
+                >
                     <BusinessIcon /> For Local Government
                 </div>
             </Link>
             <Link to="/route" className="menu-item">
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "30px 0", fontSize: "24px" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                    }}
+                >
                     <LocalShippingIcon /> For Garbase Collector
                 </div>
             </Link>

@@ -225,7 +225,6 @@ const Map: React.FC = () => {
                 alignItems: "center",
                 zIndex: 1000,}}>
                 <Menu />
-                <MenuIcon style={{width: "30px", height: "30px", padding: "5px 10px 1px"}}/>
             </div>
         </>
     );
