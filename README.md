@@ -9,7 +9,7 @@
 
 予選の資料は[こちら](https://speakerdeck.com/ryutarom/egh-timu16)
 
-決勝の資料は[こちら]([https://speakerdeck.com/ryutarom/egh-timu16](https://speakerdeck.com/ryutarom/engineer-guild-hackathon-2024-jue-sheng-timu16))
+決勝の資料は[こちら](https://speakerdeck.com/ryutarom/engineer-guild-hackathon-2024-jue-sheng-timu16)
 
 ## 動かし方
 1.
